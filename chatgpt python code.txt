@@ -1,0 +1,63 @@
+##########
+
+import random
+
+def play_game(user_choice, computer_choice):
+    if user_choice == computer_choice:
+        return "It's a tie!"
+    elif (user_choice == "rock" and computer_choice == "scissors") or (user_choice == "paper" and computer_choice == "rock") or (user_choice == "scissors" and computer_choice == "paper"):
+        return "You win!"
+    else:
+        return "You lose!"
+
+def get_computer_choice():
+    choices = ["rock", "paper", "scissors"]
+    return random.choice(choices)
+
+def get_user_choice():
+    valid_choices = ["rock", "paper", "scissors"]
+    while True:
+        user_choice = input("Enter your choice (rock/paper/scissors): ").lower()
+        if user_choice in valid_choices:
+            return user_choice
+        else:
+            print("Invalid choice. Please try again.")
+
+def main():
+    user_choice = get_user_choice()
+    computer_choice = get_computer_choice()
+    print("You chose:", user_choice)
+    print("Computer chose:", computer_choice)
+    result = play_game(user_choice, computer_choice)
+    print(result)
+
+# Run the game
+main()
+
+-------
+
+import random
+
+def roll_dice(num_dice, num_sides):
+    total = 0
+    rolls = []
+    for _ in range(num_dice):
+        roll = random.randint(1, num_sides)
+        rolls.append(roll)
+        total += roll
+    return rolls, total
+
+def main():
+    while True:
+        num_dice = int(input("Enter the number of dice to roll (or 0 to exit): "))
+        if num_dice == 0:
+            print("Exiting the program.")
+            break
+        num_sides = int(input("Enter the number of sides on the dice: "))
+        rolls, total = roll_dice(num_dice, num_sides)
+        print("Rolls:", rolls)
+        print("Total:", total)
+        print()
+
+# Run the program
+main()

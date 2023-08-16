@@ -1,0 +1,10 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+print("You find yourself standing before the delapitated Hopehaven Estate, which has been shuttered for decades. This building has a long and tragic history. It was ran by the state and has served as an orphanage, a TB sanitarum, a mental institution, and a nursing home. The crumbling facade is covered in graffiti and ivy. It's doors and windows boarded up, save for those on the upper floors which are mostly shattered. The surrounding area is mostly overgrown and with trash and debris strewn about/ The grounds are enclosed within a rusty chainlink fence that fell into disrepair, so it wasn't difficult to gain access. Your friend flew his new high-end drone through an upper window to capture some video with it, but inexplicably lost contact with it. Affraid of going in himself, he offered you $50 to go in and retrieve it for him. On top of having no flashlight, crowbar, or any other tools, the sun is setting so it will be dark soon.\n")
+input()
+print("You approach the front enterance, and notice that the bottommost boards had been pryed away.\n ")
+print("What will you do? 1.) Squeeze through the gap. 2.) Go around the back and look for another way in. 3.) Say 'fuck it' and go home.")
+answer = input()
+if answer == 3:
+  print("You turn to leave. As you're walking away from the building, you sense you're being watched. You turn and look upward toward one of the windows. Shocked, you see the vistage of a ghostly face looking at you, followed by a voice. 'That's right bitch, you best walk away...'")
+print(answer)

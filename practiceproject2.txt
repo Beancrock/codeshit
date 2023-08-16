@@ -1,0 +1,21 @@
+import random
+secret = random.randint(0, 100)
+turn_count = 5
+for turns in range(5):
+  guess = input("Pick a number between 1 and 100. You have " + str(turn_count) + " Turns: ")
+  guess = int(guess)
+  turn_count = turn_count - 1
+  print(guess)
+  if 0 < abs(guess - secret) <= 10:
+    print("You're getting close!")
+  if guess > secret:
+    print("Lower...")
+  if guess < secret:
+    print("Higher...")
+  if guess == secret:
+    print("You got it!\n")
+    exit("Game Over")
+print("You ran out of turns... The secret number was " + str(secret) + ".\n")
+exit("Game Over")
+print("You ran out of turns...")
+exit("Game Over")

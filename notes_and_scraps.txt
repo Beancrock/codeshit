@@ -1,0 +1,23 @@
+def exclamation(word):
+  print(word + "!")
+
+exclamation("spam")
+
+test = 666
+testes = test > 13
+if testes == True:
+    print("Gobble gobble!")
+else:
+    print("Gooble gooble!")
+
+print("""Multi
+line
+string""")
+
+test_variable_0 = "pickles"
+print (test_variable_0)
+print (type(test_variable_0))
+
+txt = "Hello my friends"
+x = txt.upper()
+print(x)

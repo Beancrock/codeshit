@@ -1,0 +1,27 @@
+print("Howdy! Welcome to my shop.\n")
+name = input("...and who might you be?")
+print("It's a pleasure to meet you, " + name + "!\n")
+menu = ("Lamp oil, Rope, and Bombs.\n")
+print("Here's what I have in stock: " + menu)
+request = input("What would you like?")
+if request == "Lamp oil":
+  price = 10
+elif request == "Rope":
+  price = 15
+elif request == "Bombs":
+  price = 20
+else:
+  print("You get nothing! Get out of my shop, " + name + "!")
+  exit("Game Over")	
+amount = input("Okay, " + name + ", how many " + request + " would you like?")
+total = (price * int(amount))
+print ("Very Well, that will be " + str(amount) + " " + request + "(s) for " + str(total) + " gold coins.\n")
+guess = input("Quick! Pick a number between 1 and 10. Guess")
+if int(guess) == 7:
+  print("Yay! You've guessed correctly. Good job!")
+else:
+  if int(guess) > 7:
+    print("Wrong! Too high.")
+  else:
+    print("Wrong! Too low.")
+exit("Game Over")	

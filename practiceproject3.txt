@@ -1,0 +1,25 @@
+camping_list = ["tent", "sleeping bags", "water", "raspberry pi", "coffee", "knife", "ethernet cable", "flash drive", "lube", "marshmallows"]
+print(type(camping_list))
+print(camping_list)
+camp_site = ["Crystal Lake", 404, 89.3, True]
+print (type(camp_site))
+me = camping_list[4]
+you = camping_list[-1]
+print(me)
+print(you)
+camping_list.append("toilet paper")
+camping_list.append("bidet")
+print(camping_list)
+camping_list.extend(["shotgun", "ammo"])
+print(camping_list)
+camping_list = camping_list + ["dill", "dough"]
+print(camping_list)
+camping_list.insert(0, "toaster")
+print(camping_list)
+#camping_list = clear()
+camping_list.remove("tent")
+print(camping_list)
+print(camping_list.pop(1) + " is no more...")
+print(camping_list)
+atuple = ("like", "lists", "but", "immutable", "and", "faster")
+print(atuple)

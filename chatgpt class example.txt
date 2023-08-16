@@ -1,0 +1,42 @@
+'''
+Classes are a fundamental concept in object-oriented programming (OOP), allowing you to create blueprint-like structures to define objects with attributes (variables) and methods (functions). Here's an example:
+'''
+
+class Dog:
+    # This is the constructor method that initializes the object's attributes
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    # This is a method defined within the class
+    def bark(self):
+        return "Woof! Woof!"
+    
+    # This method updates the age of the dog
+    def set_age(self, new_age):
+        self.age = new_age
+
+# Creating instances (objects) of the Dog class
+dog1 = Dog("Buddy", 3)
+dog2 = Dog("Charlie", 5)
+
+# Accessing attributes and calling methods of the objects
+print(f"{dog1.name} is {dog1.age} years old.")
+print(f"{dog2.name} says: {dog2.bark()}")
+
+# Updating the age of dog1 using the set_age method
+dog1.set_age(4)
+print(f"{dog1.name} is now {dog1.age} years old.")
+
+
+'''
+Explanation:
+
+We define a class named Dog.
+Inside the class, there's an __init__ method which acts as the constructor. It initializes the object's attributes (name and age) when an instance is created.
+We also have a method called bark which returns a simple "Woof! Woof!" message.
+Another method, set_age, allows us to update the dog's age.
+We create two instances of the Dog class, dog1 and dog2.
+We access attributes using dot notation (e.g., dog1.name, dog1.age) and call methods using the same notation (e.g., dog2.bark()).
+Finally, we demonstrate updating the age of dog1 using the set_age method.
+'''
