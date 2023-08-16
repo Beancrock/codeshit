@@ -1,0 +1,45 @@
+class StoryNode:
+    def __init__(self, text, options=None, outcomes=None):
+        self.text = text
+        self.options = options if options else []
+        self.outcomes = outcomes if outcomes else []
+
+    def add_option(self, option_text, next_node):
+        self.options.append(option_text)
+        self.outcomes.append(next_node)
+
+    def display(self):
+        print(self.text)
+        for i, option in enumerate(self.options):
+            print(f"{i + 1}. {option}")
+
+    def get_choice(self):
+        self.display()
+        choice = input("Enter your choice: ")
+        return int(choice) - 1
+
+
+def main():
+    start = StoryNode("You wake up in a mysterious room. There are two doors in front of you. Which one do you choose?")
+    door1 = StoryNode("You enter the first door and find a treasure chest. Do you open it?", options=["Yes", "No"])
+    door2 = StoryNode("You enter the second door and are surrounded by monsters. What will you do?", options=["Fight", "Run"])
+
+    start.add_option("Enter the first door", door1)
+    start.add_option("Enter the second door", door2)
+
+    door1.add_option("Yes", StoryNode("You open the chest and find a pile of gold. You're rich!"))
+    door1.add_option("No", StoryNode("You decide not to open the chest and continue your adventure."))
+
+    door2.add_option("Fight", StoryNode("You fight valiantly but are overpowered by the monsters. Game over."))
+    door2.add_option("Run", StoryNode("You manage to escape the monsters and find yourself in a beautiful garden."))
+
+    current_node = start
+
+    while current_node.options:
+        current_node = current_node.outcomes[current_node.get_choice()]
+
+    print(current_node.text)
+
+
+if __name__ == "__main__":
+    main()
