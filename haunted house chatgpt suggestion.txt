@@ -1,0 +1,26 @@
+# Define room data as a dictionary
+rooms = {
+    "a1": {
+        "name": "Billiards Room",
+        "description": "You are in the Billiards Room.",
+        "exits": {"south": "b1", "east": "a2"},
+    },
+    # Define other rooms similarly
+}
+
+# Current room
+current_room = "a1"
+
+# Main game loop
+while True:
+    # Display room description
+    print(rooms[current_room]["description"])
+
+    # Get user input
+    action = input("Actions: ").lower()
+
+    # Check if the action is valid
+    if action in rooms[current_room]["exits"]:
+        current_room = rooms[current_room]["exits"][action]
+    else:
+        print("Invalid action. Try again.")
