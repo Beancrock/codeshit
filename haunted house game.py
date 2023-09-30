@@ -10,20 +10,25 @@ item_pickles = False
 
 def health_display():
     global health_points
+    global item_key
     if health_points == 5:
-        print("\u2665 \u2665 \u2665 \u2665 \u2665\n")
+        print("\u2665 \u2665 \u2665 \u2665 \u2665")
     if health_points == 4:
-        print("\u2665 \u2665 \u2665 \u2665\n")
+        print("\u2665 \u2665 \u2665 \u2665")
     if health_points == 3:
-        print("\u2665 \u2665 \u2665\n")
+        print("\u2665 \u2665 \u2665")
     if health_points == 2:
-        print("\u2665 \u2665\n")
+        print("\u2665 \u2665")
     if health_points == 1:
-        print("\u2665\n")
+        print("\u2665")
     if health_points == 0:
         print("*dead*\n")
         game_over()
-        
+    if item_key == False:
+        print ("")
+    if item_key == True:
+        print ("🗝")    
+
 # Game Over
 
 def game_over():
@@ -38,11 +43,13 @@ def phantom_movement():
     if location_phantom == "a1":
       location_phantom = "a2"
     elif location_phantom == "a2":
+      print("You hear footsteps in the living room.\n")
       choices = ["a1", "a3", "b2"]
       location_phantom = random.choice(choices)
     elif location_phantom == "a3":
       location_phantom = "a2"
     elif location_phantom == "b1":
+      print("You hear the stairs creak.\n")
       choices = ["b2", "e1", "y1"]
       location_phantom = random.choice(choices)
     elif location_phantom == "b2":
@@ -52,22 +59,27 @@ def phantom_movement():
        choices = ["c3", "b2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "c1":
-       location_phantom = "c2"
+       print("You hear raspy chanting from the washroom.\n")
+       choices = ["c2", "f1"]
+       location_wraith = random.choice(choices)
     elif location_phantom == "c2":
        choices = ["c1", "c3", "b2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "c3":
+       print("You hear plates rattle in the kitchen.\n")
        choices = ["c2", "b3"]
        location_phantom = random.choice(choices)
     elif location_phantom == "d1":
        location_phantom = "d2"
     elif location_phantom == "d2":
+       print("You hear a shriek from the lounge.\n")
        choices = ["d1", "d3", "e2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "d3":
        choices = ["d2", "e3"]
        location_phantom = random.choice(choices)
     elif location_phantom == "e1":
+       print("You hear the stairs creak.\n")
        choices = ["e2", "b1", "q1"]
        location_phantom = random.choice(choices)
     elif location_phantom == "e2":
@@ -76,19 +88,24 @@ def phantom_movement():
     elif location_phantom == "e3":
        location_phantom = "d3"
     elif location_phantom == "f1":
-       location_phantom = "f2"
+       print("You hear raspy chanting from the bathroom.\n")
+       choices = ["c1", "f2"]
+       location_wraith = random.choice(choices)
     elif location_phantom == "f2":
+       print("You hear footsteps in the corridor.\n")
        choices = ["f1", "f3", "e2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "f3":
        location_phantom = "f2"
     elif location_phantom == "q1":
+       print("You hear the stairs creak.\n")
        choices = ["e1", "q2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "q2":
        choices = ["q1", "q3", "r2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "q3":
+       print("You hear sobbing from the garret.\n")
        location_phantom = "q2"
     elif location_phantom == "r2":
        location_phantom = "q2"   
@@ -99,6 +116,7 @@ def phantom_movement():
        choices = ["x1", "y2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "y1":
+       print("You hear the stairs creak.\n")
        choices = ["x1", "y2", "b1"]
        location_phantom = random.choice(choices)
     elif location_phantom == "y2":
@@ -117,11 +135,13 @@ def wraith_movement():
     if location_wraith == "a1":
       location_wraith = "a2"
     elif location_wraith == "a2":
+      print("You hear footsteps in the living room.\n")
       choices = ["a1", "a3", "b2"]
       location_wraith = random.choice(choices)
     elif location_wraith == "a3":
       location_wraith = "a2"
     elif location_wraith == "b1":
+      print("You hear the stairs creak.\n")
       choices = ["b2", "e1", "y1"]
       location_wraith = random.choice(choices)
     elif location_wraith == "b2":
@@ -131,7 +151,9 @@ def wraith_movement():
        choices = ["c3", "b2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "c1":
-       location_wraith = "c2"
+       print("You hear raspy chanting from the washroom.\n")
+       choices = ["c2", "f1"]
+       location_wraith = random.choice(choices)
     elif location_wraith == "c2":
        choices = ["c1", "c3", "b2"]
        location_wraith = random.choice(choices)
@@ -141,12 +163,14 @@ def wraith_movement():
     elif location_wraith == "d1":
        location_wraith = "d2"
     elif location_wraith == "d2":
+       print("You hear a shriek from the lounge.\n")
        choices = ["d1", "d3", "e2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "d3":
        choices = ["d2", "e3"]
        location_wraith = random.choice(choices)
     elif location_wraith == "e1":
+       print("You hear the stairs creak.\n")
        choices = ["e2", "b1", "q1"]
        location_wraith = random.choice(choices)
     elif location_wraith == "e2":
@@ -155,19 +179,23 @@ def wraith_movement():
     elif location_wraith == "e3":
        location_wraith = "d3"
     elif location_wraith == "f1":
-       location_wraith = "f2"
+       print("You hear raspy chanting from the bathroom.\n")
+       choices = ["c1", "f2"]
+       location_wraith = random.choice(choices)
     elif location_wraith == "f2":
        choices = ["f1", "f3", "e2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "f3":
        location_wraith = "f2"
     elif location_wraith == "q1":
+       print("You hear the stairs creak.\n")
        choices = ["e1", "q2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "q2":
        choices = ["q1", "q3"]
        location_wraith = random.choice(choices)
     elif location_wraith == "q3":
+       print("You hear sobbing from the garret.\n")
        location_wraith = "q2"
     elif location_wraith == "x1":
        choices = ["y1", "x2"]
@@ -176,6 +204,7 @@ def wraith_movement():
        choices = ["x1", "y2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "y1":
+       print("You hear the stairs creak.\n")
        choices = ["x1", "y2", "b1"]
        location_wraith = random.choice(choices)
     elif location_wraith == "y2":
@@ -223,7 +252,7 @@ def ghost_activity():
 
 def area_start():
     global location_key
-    choices = ["a1", "a3", "c1", "x2", "d1", "e3", "f1", "f3", "q3", "r2"]
+    choices = ["a1", "a2", "x2", "d1", "e3", "f3", "q3", "r2"]
     location_key = random.choice(choices)
     input("You enter the haunted house. The door slams shut and locks behind you.\n")
     area_c2()
