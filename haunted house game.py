@@ -110,6 +110,7 @@ def phantom_movement():
     elif location_phantom == "r2":
        location_phantom = "q2"   
     elif location_phantom == "x1":
+       print("You hear bottles shattering in the wine cellar.")
        choices = ["y1", "x2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "x2":
@@ -198,6 +199,7 @@ def wraith_movement():
        print("You hear sobbing from the garret.\n")
        location_wraith = "q2"
     elif location_wraith == "x1":
+       print("You hear bottles shattering in the win cellar.")
        choices = ["y1", "x2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "x2":
