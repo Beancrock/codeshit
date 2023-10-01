@@ -41,7 +41,7 @@ def health_display():
 
 def game_over():
     print("-Game Over-\n")
-    input()
+    input("Thanks for playing (I'm sorry)! ⏎\n")
     exit()
 
 # Phantom Movement
@@ -194,6 +194,7 @@ def wraith_movement():
        choices = ["c1", "f2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "f2":
+       print("You hear footsteps in the corridor.\n")
        choices = ["f1", "f3", "e2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "f3":
@@ -262,12 +263,25 @@ def ghost_activity():
                      
 # Game Start
 
+print("""
+
+   ╔══════════════════════════════════════════╗
+   ║  Welcome to...                           ║
+   ║                                          ║
+   ║ ┤SHITTY TEXT-BASED SURVIVAL HORROR GAME├ ║
+   ║                                          ║
+   ║                    ©1985 Father Heathen  ║
+   ╚══════════════════════════════════════════╝
+      
+""")
+
+input("Instructions: Type the numerical value that corrisponds with chosen direction, and then hit 'Enter'. ⏎\n")
 def area_start():
     global location_key
     global location_
     choices = ["x2", "d1", "d3", "f3", "q3", "r2"]
     location_key = random.choice(choices)
-    input("You enter the haunted house. The door slams shut and locks behind you.\n")
+    input("You enter the haunted house. The door slams shut and locks behind you. ⏎\n")
     area_c2()
 
 # The First Floor
@@ -282,7 +296,7 @@ def area_a1():
     print("[ ][ ][ ]\n")
     print("Location: Billiards Room\n")
     ghost_activity()
-    travel_player = input("Actions: 1.) East 2.) South \n")
+    travel_player = input("Actions: 1.) East 2.) South #\n")
     if travel_player == "1":
         area_a2()
     if travel_player == "2":
@@ -300,7 +314,7 @@ def area_a2():
     print("[ ][ ][ ]\n")
     print("Location: Living Room\n")
     ghost_activity()
-    travel_player = input("Actions: 1.) West 2.) South 3.) East \n")
+    travel_player = input("Actions: 1.) West 2.) South 3.) East #\n")
     if travel_player == "1":
         area_a1()
     if travel_player == "2":
@@ -323,7 +337,7 @@ def area_a3():
     if item_sigil == False:
         print ("You found a silver sigil.\n")
         item_sigil = True
-    travel_player = input("Actions: 1.) West \n")
+    travel_player = input("Actions: 1.) West #\n")
     if travel_player == "1":
         area_a2()    
     else:
@@ -338,7 +352,7 @@ def area_b1():
     print("[x][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Stairwell (1st)\n")
-    travel_player = input("Actions: 1.) East 2.) North. 3.) Up 4.) Down \n")
+    travel_player = input("Actions: 1.) East 2.) North. 3.) Up 4.) Down #\n")
     if travel_player == "1":
         area_b2()
     if travel_player == "2":
@@ -361,7 +375,7 @@ def area_b2():
     print("[ ][x][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Parlor\n")
-    travel_player = input("Actions: 1.) West. 2.) South 3.) East 4.) North \n")
+    travel_player = input("Actions: 1.) West. 2.) South 3.) East 4.) North #\n")
     if travel_player == "1":
         area_b1()
     if travel_player == "2":
@@ -382,7 +396,7 @@ def area_b3():
     print("[ ][ ][x]")
     print("[ ][ ][ ]\n")
     print("Location: Dining Room\n")
-    travel_player = input("Actions: 1.) West 2.) South \n")
+    travel_player = input("Actions: 1.) West 2.) South #\n")
     if travel_player == "1":
         area_b2()
     if travel_player == "2":
@@ -404,8 +418,8 @@ def area_c1():
     if health_points < 5 and medical_1 == True:
         health_points = health_points + 1
         medical_1 = False
-        print("You find and apply first-aid.")
-    travel_player = input("Actions: 1.) East \n")
+        print("You find and apply first-aid.\n")
+    travel_player = input("Actions: 1.) East #\n")
     if travel_player == "1":
         area_c2()    
     else:
@@ -421,7 +435,7 @@ def area_c2():
     print("[ ][ ][ ]")
     print("[ ][x][ ]\n")
     print("Location: Foyer\n")
-    travel_player = input("Actions: 1.) West 2.) North 3.) East 4.) South \n")
+    travel_player = input("Actions: 1.) West 2.) North 3.) East 4.) South #\n")
     if travel_player == "1":
         area_c1()
     if travel_player == "2":
@@ -447,7 +461,7 @@ def area_c3():
     print("[ ][ ][ ]")
     print("[ ][ ][x]\n")
     print("Location: Kitchen\n")
-    travel_player = input("Actions: 1.) West 2.) North \n")
+    travel_player = input("Actions: 1.) West 2.) North #\n")
     if travel_player == "1":
         area_c2()
     if travel_player == "2":
@@ -466,7 +480,7 @@ def area_x1():
     print("[ ][ ]")
     print("[ ]\n")
     print("Location: Wine Cellar\n")
-    travel_player = input("Actions: 1.) South 2.) East \n")
+    travel_player = input("Actions: 1.) South 2.) East #\n")
     if travel_player == "1":
         area_y1()
     if travel_player == "2":
@@ -483,7 +497,7 @@ def area_x2():
     print("[ ][ ]")
     print("[ ]\n")
     print("Location: Storage Room\n")
-    travel_player = input("Actions: 1.) West 2.) South \n")
+    travel_player = input("Actions: 1.) West 2.) South #\n")
     if travel_player == "1":
         area_x1()
     if travel_player == "2":
@@ -500,7 +514,7 @@ def area_y1():
     print("[x][ ]")
     print("[ ]\n")
     print("Location: Stairwell (B)\n")
-    travel_player = input("Actions: 1.) North 2.) East 3.) South 4.) Up \n")
+    travel_player = input("Actions: 1.) North 2.) East 3.) South 4.) Up #\n")
     if travel_player == "1":
         area_x1()
     if travel_player == "2":
@@ -522,7 +536,7 @@ def area_y2():
     print("[ ][x]")
     print("[ ]\n")
     print("Location: Laundry Room\n")
-    travel_player = input("Actions: 1.) North 2.) West \n")
+    travel_player = input("Actions: 1.) North 2.) West \n#")
     if travel_player == "1":        
         area_x2()
     if travel_player == "2":
@@ -539,7 +553,7 @@ def area_z1():
     print("[ ][ ]")
     print("[x]\n")
     print("Location: Spandrel\n")
-    travel_player = input("Actions: 1.) North. \n")
+    travel_player = input("Actions: 1.) North. #\n")
     if travel_player == "1":        
         area_y1()
     if travel_player == "666":
@@ -574,7 +588,7 @@ def area_z2():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠶⣶⣶⣶⣶⣶⣶⣶⣶⠶⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
         """)
-    travel_player = input("Actions: 1.) West \n")
+    travel_player = input("Actions: 1.) West #\n")
     if travel_player == "1":        
         area_z1()
     else:
@@ -591,7 +605,7 @@ def area_d1():
     print("[ ][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Guest Bedroom\n")
-    travel_player = input("Actions: 1.) East \n")
+    travel_player = input("Actions: 1.) East #\n")
     if travel_player == "1":
         area_d2()
     else:
@@ -606,7 +620,7 @@ def area_d2():
     print("[ ][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Lounge\n")
-    travel_player = input("Actions: 1.) West 2.) East 3.) South \n")
+    travel_player = input("Actions: 1.) West 2.) East 3.) South #\n")
     if travel_player == "1":
         area_d1()
     if travel_player == "2":
@@ -625,7 +639,7 @@ def area_d3():
     print("[ ][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Master Bedroom\n")
-    travel_player = input("Actions: 1.) West 2.) South \n")
+    travel_player = input("Actions: 1.) West 2.) South #\n")
     if travel_player == "1":
         area_d2()
     if travel_player == "2":
@@ -642,7 +656,7 @@ def area_e1():
     print("[x][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Stairwell (2nd)\n")
-    travel_player = input("Actions: 1.) Up 2.) Down 3.) East \n")
+    travel_player = input("Actions: 1.) Up 2.) Down 3.) East #\n")
     if travel_player == "1":
         print("You ascend to the attic.\n")
         area_q1()
@@ -663,7 +677,7 @@ def area_e2():
     print("[ ][x][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Hallway\n")
-    travel_player = input("Actions: 1.) West 2.) North 3.) South \n")
+    travel_player = input("Actions: 1.) West 2.) North 3.) South #\n")
     if travel_player == "1":
         area_e1()
     if travel_player == "2":
@@ -688,7 +702,7 @@ def area_e3():
         print ("You place the sigil upon the altar, banishing the wraith!\n")
         item_sigil = False
         location_wraith = "hell"
-    travel_player = input("Actions: 1.) North \n")
+    travel_player = input("Actions: 1.) North #\n")
     if travel_player == "1":
         area_d3()
     else:
@@ -708,8 +722,8 @@ def area_f1():
     if health_points < 5 and medical_2 == True:
         health_points = health_points + 1
         medical_2 = False
-        print("You find and apply first-aid.")
-    travel_player = input("Actions: 1.) East \n")
+        print("You find and apply first-aid.\n")
+    travel_player = input("Actions: 1.) East #\n")
     if travel_player == "1":
         area_f2()
     else:
@@ -724,7 +738,7 @@ def area_f2():
     print("[ ][ ][ ]")
     print("[ ][x][ ]\n")
     print("Location: Corridor\n")
-    travel_player = input("Actions: 1.) West 2.) North 3.) East \n")
+    travel_player = input("Actions: 1.) West 2.) North 3.) East #\n")
     if travel_player == "1":
         area_f1()
     if travel_player == "2":
@@ -743,7 +757,7 @@ def area_f3():
     print("[ ][ ][ ]")
     print("[ ][ ][x]\n")
     print("Location: Study\n")
-    travel_player = input("Actions: 1.) West\n")
+    travel_player = input("Actions: 1.) West#\n")
     if travel_player == "1":
         area_f2()
     else:
@@ -759,7 +773,7 @@ def area_q1():
     print("[x][ ][ ]")
     print("   [ ]\n")
     print("Location: Stairwell (A)\n")
-    travel_player = input("Actions: 1.) Down 2.) East \n")
+    travel_player = input("Actions: 1.) Down 2.) East #\n")
     if travel_player == "1":
         print("You descend to the second floor.\n")
         area_e1()
@@ -776,7 +790,7 @@ def area_q2():
     print("[ ][x][ ]")
     print("   [ ]\n")
     print("Location: Landing\n")
-    travel_player = input("Actions: 1.) West 2.) East 3.) South \n")
+    travel_player = input("Actions: 1.) West 2.) East 3.) South #\n")
     if travel_player == "1":
         area_q1()
     if travel_player == "2":
@@ -794,7 +808,7 @@ def area_q3():
     print("[ ][ ][x]")
     print("   [ ]\n")
     print("Location: Garret\n")
-    travel_player = input("Actions: 1.) West \n")
+    travel_player = input("Actions: 1.) West #\n")
     if travel_player == "1":
         area_q2()
     else:
@@ -808,7 +822,7 @@ def area_r2():
     print("[ ][ ][ ]")
     print("   [x]\n")
     print("Location: Loft\n")
-    travel_player = input("Actions: 1.) North \n")
+    travel_player = input("Actions: 1.) North #\n")
     if travel_player == "1":
         area_q2()
     else:
