@@ -275,7 +275,8 @@ print("""
       
 """)
 
-input("Instructions: Type the numerical value that corrisponds with chosen direction, and then hit 'Enter'. ⏎\n")
+print("Instructions: Type the numerical value that corrisponds with chosen direction, and then hit 'Enter'.")
+input("The goal is to navigate the haunted house, avoid the ghosts, find the key (randomly placed), and escape. ⏎\n")
 def area_start():
     global location_key
     global location_
