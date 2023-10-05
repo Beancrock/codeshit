@@ -30,18 +30,18 @@ def health_display():
     if item_key == False:
         show_key = ("")
     if item_key == True:
-        show_key = ("🗝")
+        show_key = ("†")
     if item_sigil == False:
         show_sigil = ("")
     if item_sigil == True:
-        show_sigil = ("⛧")
+        show_sigil = ("☼")
     print(show_sigil + show_key)            
 
 # Game Over
 
 def game_over():
     print("-Game Over-\n")
-    input("Thanks for playing (I'm sorry)! ⏎\n")
+    input("Thanks for playing! ←\n")
     exit()
 
 # Phantom Movement
@@ -52,13 +52,13 @@ def phantom_movement():
       choices = ["a2", "b1"]
       location_phantom = random.choice(choices)
     elif location_phantom == "a2":
-      print("You hear footsteps in the living room.\n")
+      input("You hear footsteps in the living room. ←\n")
       choices = ["a1", "a3", "b2"]
       location_phantom = random.choice(choices)
     elif location_phantom == "a3":
       location_phantom = "a2"
     elif location_phantom == "b1":
-      print("You hear the stairs creak.\n")
+      input("You hear the stairs creak. ←\n")
       choices = ["b2", "a1", "e1", "y1"]
       location_phantom = random.choice(choices)
     elif location_phantom == "b2":
@@ -68,27 +68,27 @@ def phantom_movement():
        choices = ["c3", "b2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "c1":
-       print("You hear raspy chanting from the washroom.\n")
+       input("You hear raspy chanting from the washroom. ←\n")
        choices = ["c2", "f1"]
        location_phantom = random.choice(choices)
     elif location_phantom == "c2":
        choices = ["c1", "c3", "b2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "c3":
-       print("You hear plates rattle in the kitchen.\n")
+       input("You hear plates rattle in the kitchen. ←\n")
        choices = ["c2", "b3"]
        location_phantom = random.choice(choices)
     elif location_phantom == "d1":
        location_phantom = "d2"
     elif location_phantom == "d2":
-       print("You hear a shriek from the lounge.\n")
+       inputt("You hear a shriek from the lounge. ←\n")
        choices = ["d1", "d3", "e2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "d3":
        choices = ["d2", "e3"]
        location_phantom = random.choice(choices)
     elif location_phantom == "e1":
-       print("You hear the stairs creak.\n")
+       print("You hear the stairs creak. ←\n")
        choices = ["e2", "b1", "q1"]
        location_phantom = random.choice(choices)
     elif location_phantom == "e2":
@@ -97,36 +97,36 @@ def phantom_movement():
     elif location_phantom == "e3":
        location_phantom = "d3"
     elif location_phantom == "f1":
-       print("You hear raspy chanting from the bathroom.\n")
+       input("You hear raspy chanting from the bathroom. ←\n")
        choices = ["c1", "f2"]
-       location_wraith = random.choice(choices)
+       location_phantom = random.choice(choices)
     elif location_phantom == "f2":
-       print("You hear footsteps in the corridor.\n")
+       input("You hear footsteps in the corridor. ←\n")
        choices = ["f1", "f3", "e2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "f3":
        location_phantom = "f2"
     elif location_phantom == "q1":
-       print("You hear the stairs creak.\n")
+       input("You hear the stairs creak. ←\n")
        choices = ["e1", "q2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "q2":
        choices = ["q1", "q3", "r2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "q3":
-       print("You hear Wailing from the garret.\n")
+       input("You hear Wailing from the garret. ←\n")
        location_phantom = "q2"
     elif location_phantom == "r2":
        location_phantom = "q2"   
     elif location_phantom == "x1":
-       print("You hear bottles shattering in the wine cellar.\n")
+       input("You hear bottles shattering in the wine cellar. ←\n")
        choices = ["y1", "x2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "x2":
        choices = ["x1", "y2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "y1":
-       print("You hear the stairs creak.\n")
+       input("You hear the stairs creak. ←\n")
        choices = ["x1", "y2", "b1"]
        location_phantom = random.choice(choices)
     elif location_phantom == "y2":
@@ -144,15 +144,15 @@ def wraith_movement():
     global location_wraith
     if location_wraith == "a1":
       choices = ["a2", "b1"]
-      location_phantom = random.choice(choices)
+      location_wraith = random.choice(choices)
     elif location_wraith == "a2":
-      print("You hear footsteps in the living room.\n")
+      input("You hear footsteps in the living room. ←\n")
       choices = ["a1", "a3", "b2"]
       location_wraith = random.choice(choices)
     elif location_wraith == "a3":
       location_wraith = "a2"
     elif location_wraith == "b1":
-      print("You hear the stairs creak.\n")
+      input("You hear the stairs creak. ←\n")
       choices = ["b2", "a1", "e1", "y1"]
       location_wraith = random.choice(choices)
     elif location_wraith == "b2":
@@ -162,7 +162,7 @@ def wraith_movement():
        choices = ["c3", "b2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "c1":
-       print("You hear raspy chanting from the washroom.\n")
+       input("You hear raspy chanting from the washroom. ←\n")
        choices = ["c2", "f1"]
        location_wraith = random.choice(choices)
     elif location_wraith == "c2":
@@ -174,14 +174,14 @@ def wraith_movement():
     elif location_wraith == "d1":
        location_wraith = "d2"
     elif location_wraith == "d2":
-       print("You hear a shriek from the lounge.\n")
+       input("You hear a shriek from the lounge. ←\n")
        choices = ["d1", "d3", "e2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "d3":
        choices = ["d2", "e3"]
        location_wraith = random.choice(choices)
     elif location_wraith == "e1":
-       print("You hear the stairs creak.\n")
+       input("You hear the stairs creak. ←\n")
        choices = ["e2", "b1", "q1"]
        location_wraith = random.choice(choices)
     elif location_wraith == "e2":
@@ -190,34 +190,34 @@ def wraith_movement():
     elif location_wraith == "e3":
        location_wraith = "d3"
     elif location_wraith == "f1":
-       print("You hear raspy chanting from the bathroom.\n")
+       input("You hear raspy chanting from the bathroom. ←\n")
        choices = ["c1", "f2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "f2":
-       print("You hear footsteps in the corridor.\n")
+       input("You hear footsteps in the corridor. ←\n")
        choices = ["f1", "f3", "e2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "f3":
        location_wraith = "f2"
     elif location_wraith == "q1":
-       print("You hear the stairs creak.\n")
+       input("You hear the stairs creak. ←\n")
        choices = ["e1", "q2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "q2":
        choices = ["q1", "q3"]
        location_wraith = random.choice(choices)
     elif location_wraith == "q3":
-       print("You hear wailing from the garret.\n")
+       input("You hear wailing from the garret. ←\n")
        location_wraith = "q2"
     elif location_wraith == "x1":
-       print("You hear bottles shattering in the win cellar.")
+       input("You hear bottles shattering in the win cellar. ←")
        choices = ["y1", "x2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "x2":
        choices = ["x1", "y2"]
        location_wraith = random.choice(choices)
     elif location_wraith == "y1":
-       print("You hear the stairs creak.\n")
+       input("You hear the stairs creak. ←\n")
        choices = ["x1", "y2", "b1"]
        location_wraith = random.choice(choices)
     elif location_wraith == "y2":
@@ -241,25 +241,25 @@ def ghost_activity():
     if location_key == location_player:
         item_key = True
         location_key = "void"
-        print ("You've found the key!\n")
+        input("You've found the key! ←\n")
     if location_phantom == location_player:    
-        print("You're attacked by a phantom!\n")
+        input("You're attacked by a phantom! ←\n")
         health_points = health_points - 1
     if location_wraith == location_player:    
-        print("You're attacked by a wraith!\n")
+        input("You're attacked by a wraith! ←\n")
         health_points = health_points - 1
     if location_phantom == location_wraith:    
-        print("You hear a voice whisper in your ear, 'Speak the Beast's number beneath the steps...'\n")        
+        input("You hear a voice whisper in your ear, 'Speak the Beast's number beneath the steps...' ←\n")        
     phantom_movement()
     wraith_movement()   
     if location_phantom == location_player:    
-        print("You're attacked by a phantom!\n")
+        input("You're attacked by a phantom! ←\n")
         health_points = health_points - 1
     if location_wraith == location_player:    
-        print("You're attacked by a wraith!\n")
+        input("You're attacked by a wraith! ←\n")
         health_points = health_points - 1
     if location_phantom == location_wraith:    
-        print("You hear a voice whisper in your ear, 'Speak the Beast's number beneath the steps...'\n")
+        input("You hear a voice whisper in your ear, 'Speak the Beast's number beneath the steps...' ←\n")
                      
 # Game Start
 
@@ -270,19 +270,19 @@ print("""
    ║                                          ║
    ║ ┤SHITTY TEXT-BASED SURVIVAL HORROR GAME├ ║
    ║                                          ║
-   ║                    ©1985 Father Heathen  ║
+   ║                       By Father Heathen  ║
    ╚══════════════════════════════════════════╝
       
 """)
 
-print("Instructions: Type the numerical value that corrisponds with chosen direction, and then hit 'Enter'.")
-input("The goal is to navigate the haunted house, avoid the ghosts, find the key (randomly placed), and escape. ⏎\n")
+print("Instructions: Type the numerical value that corresponds with the chosen direction, and then press 'Enter'.")
+input("The goal is to navigate the haunted house, avoid the ghosts, find the key (randomly placed), and escape. ←\n")
+
 def area_start():
     global location_key
-    global location_
     choices = ["x2", "d1", "d3", "f3", "q3", "r2"]
     location_key = random.choice(choices)
-    input("You enter the haunted house. The door slams shut and locks behind you. ⏎\n")
+    input("You enter the haunted house. The door slams shut and locks behind you. ←\n")
     area_c2()
 
 # The First Floor
@@ -296,7 +296,6 @@ def area_a1():
     print("[ ][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Billiards Room\n")
-    ghost_activity()
     travel_player = input("Actions: 1.) East 2.) South #\n")
     if travel_player == "1":
         area_a2()
@@ -314,7 +313,6 @@ def area_a2():
     print("[ ][ ][ ]")
     print("[ ][ ][ ]\n")
     print("Location: Living Room\n")
-    ghost_activity()
     travel_player = input("Actions: 1.) West 2.) South 3.) East #\n")
     if travel_player == "1":
         area_a1()
@@ -336,7 +334,7 @@ def area_a3():
     print("[ ][ ][ ]\n")
     print("Location: Alcove\n")
     if item_sigil == False:
-        print ("You found a silver sigil.\n")
+        input("You found a silver sigil. ←\n")
         item_sigil = True
     travel_player = input("Actions: 1.) West #\n")
     if travel_player == "1":
@@ -359,10 +357,10 @@ def area_b1():
     if travel_player == "2":
         area_a1()    
     if travel_player == "3":
-        print("You ascend to the second floor.\n")
+        input("You ascend to the second floor. ←\n")
         area_e1()
     if travel_player == "4":
-        print("You descend to the basement.\n")
+        input("You descend to the basement. ←\n")
         area_y1()
     else:
         area_b1()
@@ -419,7 +417,7 @@ def area_c1():
     if health_points < 5 and medical_1 == True:
         health_points = health_points + 1
         medical_1 = False
-        print("You find and apply first-aid.\n")
+        input("You find and apply first-aid. ←\n")
     travel_player = input("Actions: 1.) East #\n")
     if travel_player == "1":
         area_c2()    
@@ -445,10 +443,10 @@ def area_c2():
         area_c3()
     if travel_player == "4":
         if item_key == False:
-            print("The door is locked.\n")
+            input("The door is locked. ←\n")
             area_c2()
         if item_key == True:
-            print("You've escaped!\n")
+            input("You've escaped! ←\n")
             game_over()
     else:
         area_c2()
@@ -523,7 +521,7 @@ def area_y1():
     if travel_player == "3":
         area_z1()
     if travel_player == "4":
-        print("You ascend to the first floor.\n")
+        input("You ascend to the first floor. ←\n")
         area_b1()
     else:
         area_y1()
@@ -659,10 +657,10 @@ def area_e1():
     print("Location: Stairwell (2nd)\n")
     travel_player = input("Actions: 1.) Up 2.) Down 3.) East #\n")
     if travel_player == "1":
-        print("You ascend to the attic.\n")
+        input("You ascend to the attic. ←\n")
         area_q1()
     if travel_player == "2":
-        print("You descend to the first floor.\n")
+        input("You descend to the first floor. ←\n")
         area_b1()
     if travel_player == "3":
         area_e2()        
@@ -700,7 +698,7 @@ def area_e3():
     print("[ ][ ][ ]\n")
     print("Location: Altar Room\n")
     if item_sigil == True:
-        print ("You place the sigil upon the altar, banishing the wraith!\n")
+        input("You place the sigil upon the altar, banishing the wraith! ←\n")
         item_sigil = False
         location_wraith = "hell"
     travel_player = input("Actions: 1.) North #\n")
@@ -723,7 +721,7 @@ def area_f1():
     if health_points < 5 and medical_2 == True:
         health_points = health_points + 1
         medical_2 = False
-        print("You find and apply first-aid.\n")
+        input("You find and apply first-aid. ←\n")
     travel_player = input("Actions: 1.) East #\n")
     if travel_player == "1":
         area_f2()
@@ -776,7 +774,7 @@ def area_q1():
     print("Location: Stairwell (A)\n")
     travel_player = input("Actions: 1.) Down 2.) East #\n")
     if travel_player == "1":
-        print("You descend to the second floor.\n")
+        input("You descend to the second floor. ←\n")
         area_e1()
     if travel_player == "2":
         area_q2()    
