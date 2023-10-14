@@ -81,7 +81,7 @@ def phantom_movement():
     elif location_phantom == "d1":
        location_phantom = "d2"
     elif location_phantom == "d2":
-       inputt("You hear a shriek from the lounge. ←\n")
+       input("You hear a shriek from the lounge. ←\n")
        choices = ["d1", "d3", "e2"]
        location_phantom = random.choice(choices)
     elif location_phantom == "d3":
