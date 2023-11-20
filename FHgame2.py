@@ -1,184 +1,82 @@
-# dictionaries
+#imported shit
 
-x1y1z1 = {
-    "x_column": 1,
-    "y_row": 1,
-    "z_level": 1,
-    "map_app": " "
-}
-x2y1z1 = {
-    "x_column": 2,
-    "y_row": 1,
-    "z_level": 1,
-    "map_app": " "
-}
-x3y1z1 = {
-    "x_column": 3,
-    "y_row": 1,
-    "z_level": 1,
-    "map_app": " "
-}
-x4y1z1 = {
-    "x_column": 4,
-    "y_row": 1,
-    "z_level": 1,
-    "map_app": " "
-}
-x5y1z1 = {
-    "x_column": 5,
-    "y_row": 1,
-    "z_level": 1,
-    "map_app": " "
-}
+import random
 
-x1y2z1 = {
-    "x_column": 1,
-    "y_row": 2,
-    "z_level": 1,
-    "map_app": " "
-}
-x2y2z1 = {
-    "x_column": 2,
-    "y_row": 2,
-    "z_level": 1,
-    "map_app": " "
-}
-x3y2z1 = {
-    "x_column": 3,
-    "y_row": 2,
-    "z_level": 1,
-    "map_app": " "
-}
-x4y2z1 = {
-    "x_column": 4,
-    "y_row": 2,
-    "z_level": 1,
-    "map_app": " "
-}
-x5y2z1 = {
-    "x_column": 5,
-    "y_row": 2,
-    "z_level": 1,
-    "map_app": " "
-}
+#default variables
 
-x1y3z1 = {
-    "x_column": 1,
-    "y_row": 3,
-    "z_level": 1,
-    "map_app": " "
-}
-x2y3z1 = {
-    "x_column": 2,
-    "y_row": 3,
-    "z_level": 1,
-    "map_app": " "
-}
-x3y3z1 = {
-    "x_column": 3,
-    "y_row": 3,
-    "z_level": 1,
-    "map_app": " "
-}
-x4y3z1 = {
-    "x_column": 4,
-    "y_row": 3,
-    "z_level": 1,
-    "map_app": " "
-}
-x5y3z1 = {
-    "x_column": 5,
-    "y_row": 3,
-    "z_level": 1,
-    "map_app": " "
-}
+player_axis_y = 1
+player_axis_x = 3
 
-x1y4z1 = {
-    "x_column": 1,
-    "y_row": 4,
-    "z_level": 1,
-    "map_app": " "
-}
-x2y4z1 = {
-    "x_column": 2,
-    "y_row": 4,
-    "z_level": 1,
-    "map_app": " "
-}
-x3y4z1 = {
-    "x_column": 3,
-    "y_row": 4,
-    "z_level": 1,
-    "map_app": " "
-}
-x4y4z1 = {
-    "x_column": 4,
-    "y_row": 4,
-    "z_level": 1,
-    "map_app": " "
-}
-x5y4z1 = {
-    "x_column": 5,
-    "y_row": 4,
-    "z_level": 1,
-    "map_app": " "
-}
-
-x1y5z1 = {
-    "x_column": 1,
-    "y_row": 5,
-    "z_level": 1,
-    "map_app": " "
-}
-x2y5z1 = {
-    "x_column": 2,
-    "y_row": 5,
-    "z_level": 1,
-    "map_app": " "
-}
-x3y5z1 = {
-    "x_column": 3,
-    "y_row": 5,
-    "z_level": 1,
-    "map_app": " "
-}
-x4y5z1 = {
-    "x_column": 4,
-    "y_row": 5,
-    "z_level": 1,
-    "map_app": " "
-}
-x5y5z1 = {
-    "x_column": 5,
-    "y_row": 5,
-    "z_level": 1,
-    "map_app": " "
-}
+x1y5 = " "
+x1y4 = " "
+x1y3 = " "
+x1y2 = " "
+x1y1 = " "
+x2y5 = " "
+x2y4 = " "
+x2y3 = " "
+x2y2 = " "
+x2y1 = " "
+x3y5 = " "
+x3y4 = " "
+x3y3 = " "
+x3y2 = " "
+x3y1 = " "
+x4y5 = " "
+x4y4 = " "
+x4y3 = " "
+x4y2 = " "
+x4y1 = " "
+x5y5 = " "
+x5y4 = " "
+x5y3 = " "
+x5y2 = " "
+x5y1 = " "
 
 # map display
 
 def map_display():
-    print("[" + x1y1z1["map_app"] + "][" + x2y1z1["map_app"] + "][" + x3y1z1["map_app"] + "][" + x4y1z1["map_app"] + "][" + x5y1z1["map_app"] + "]")
-    print("[" + x1y2z1["map_app"] + "][" + x2y2z1["map_app"] + "][" + x3y2z1["map_app"] + "][" + x4y2z1["map_app"] + "][" + x5y2z1["map_app"] + "]")
-    print("[" + x1y3z1["map_app"] + "][" + x2y3z1["map_app"] + "][" + x3y3z1["map_app"] + "][" + x4y3z1["map_app"] + "][" + x5y3z1["map_app"] + "]")
-    print("[" + x1y4z1["map_app"] + "][" + x2y4z1["map_app"] + "][" + x3y4z1["map_app"] + "][" + x4y4z1["map_app"] + "][" + x5y4z1["map_app"] + "]")
-    print("[" + x1y5z1["map_app"] + "][" + x2y5z1["map_app"] + "][" + x3y5z1["map_app"] + "][" + x4y5z1["map_app"] + "][" + x5y5z1["map_app"] + "]")
+    print("[" + x1y5 + "][" + x2y5 + "][" + x3y5 + "][" + x4y5 + "][" + x5y5 + "]")
+    print("[" + x1y4 + "][" + x2y4 + "][" + x3y4 + "][" + x4y4 + "][" + x5y4 + "]")
+    print("[" + x1y3 + "][" + x2y3 + "][" + x3y3 + "][" + x4y3 + "][" + x5y3 + "]")
+    print("[" + x1y2 + "][" + x2y2 + "][" + x3y2 + "][" + x4y2 + "][" + x5y2 + "]")
+    print("[" + x1y1 + "][" + x2y1 + "][" + x3y1 + "][" + x4y1 + "][" + x5y1 + "]")
     print()
 
-# command menu
+# player input
 
-def command_menu():
-    print("North: (1) South: (2) East: (3) West: (4) Search: (5) Item: (6)")
+def player_movement():
+    global player_axis_y
+    global player_axis_x
+    print("Location: X=[" + str(player_axis_x) + "] Y=[" + str(player_axis_y) + "]")
     print()
+    while True:
+        direction = input("(n)orth. (s)outh. (e)ast. (w)est. :")
+        print()
+        if direction == ("n"):
+            player_axis_y = player_axis_y + 1
+            break
+        if direction == ("s"):
+            player_axis_y = player_axis_y - 1
+            break
+        if direction == ("e"):
+            player_axis_x = player_axis_x - 1
+            break
+        if direction == ("w"):
+            player_axis_x = player_axis_x + 1
+            break    
+        print("Invalid input..")
+        print()
 
-# temp loop for testing purposes    
+
+# game loop    
+
 
 def game_loop():
-    pickle = True
-    while pickle == True:
+    while True:
         map_display()
-        command_menu()
-        break
+        player_movement()
+        
 
 # intitate game
 
