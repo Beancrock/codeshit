@@ -12,7 +12,7 @@ player_direction = "↑N"
 enemy_axis_y = 3
 enemy_axis_x = 3
 enemy_axis_z = 3
-enemy_direction = "↓S"
+
 
 # player input
 
@@ -21,14 +21,19 @@ def player_commands():
     global player_axis_x
     global player_axis_z
     global player_direction
+    global player_choice
     global turn
     turn = turn + 1
     while True:
         print("Turn #" + str(turn))
         print("Location= X: " + str(player_axis_x) + " Y: " + str(player_axis_y) + " Z: " + str(player_axis_z) + " D: " + str(player_direction))
         print()
-        player_choice = input("(F)oward. (L)elt. (R)ight. (D)escend. (A)scend. (S)can. (T)orpedo :")
+        player_choice = input("(F)oward (L)elt (R)ight (D)escend (A)scend (S)can (T)orpedo (Q)uit :")
         print()
+    # exit
+        if player_choice == "q":
+            print("Thanks for playing!")
+            exit()
     # turning left
         if player_choice == "l":
             print("Your vessel banks toward portside..")
@@ -94,27 +99,81 @@ def player_commands():
             break
     # firing
         if player_choice == "t":
-           print("Not yet implimented...")     
-           print()
-           break   
+            print("Not yet implimented...")     
+            print()
+            break   
     # error
         else:
             print("Invalid input..")
             print()
             
+def enemy_movement():
+    global player_axis_y
+    global player_axis_x
+    global player_axis_z
+    global player_direction
+    global player_choice
+    global enemy_axis_y
+    global enemy_axis_x
+    global enemy_axis_z
+    while True:
+        if player_axis_x > enemy_axis_x:
+            enemy_axis_x = enemy_axis_x + 1
+            break
+        if player_axis_x < enemy_axis_x:
+            enemy_axis_x = enemy_axis_x - 1
+            break
+        if player_axis_y > enemy_axis_y:
+            enemy_axis_y = enemy_axis_y + 1
+            break
+        if player_axis_y < enemy_axis_y:
+            enemy_axis_y = enemy_axis_y - 1
+            break
+        if player_axis_z > enemy_axis_z:
+            enemy_axis_z = enemy_axis_z + 1
+            break
+        if player_axis_z < enemy_axis_z:
+            enemy_axis_z = enemy_axis_z - 1
+            break
+        else:
+            print("Your vessel shakes violenty. Alarm systems blare. Wires and panels hiss and crackle")
+            print("with sparks. Pipes and hoses hiss and rupture. The hull echos with the horrible")
+            print("sound of contorting and buckling metal. Frigid water spills into the interior,")
+            print("flooding it. The lights flicker and go dark. Game over...")
+            print()
+            while True:
+                player_choice = input("Do you wish to try again? Y/N")
+                print()
+                if player_choice == "y":
+                    game_loop() 
+                if player_choice == "n":
+                    exit()
+                else:
+                    print("Invalid input..")
+                    print()
 
+
+
+
+
+
+
+
+    
         
 
 # game loop    
  
 def game_loop():
+    global turn
+    turn = 0
     print("╔═════════════════╗")
     print("║ Submarine Game. ║")
     print("╚═════════════════╝")
     print()
     while True:
         player_commands()
-      
+        enemy_movement()
   
 # intitate game
 
