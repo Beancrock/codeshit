@@ -5,14 +5,13 @@ import random
 # default variables
 
 turn = 0
-player_axis_y = -3
-player_axis_x = -3
-player_axis_z = -3
-player_direction = "↑N"
-enemy_axis_y = 3
-enemy_axis_x = 3
-enemy_axis_z = 3
-
+player_axis_y = 5
+player_axis_x = 5
+player_axis_z = 5
+player_direction = "↓S"
+enemy_axis_y = -5
+enemy_axis_x = -5
+enemy_axis_z = -5
 
 # player input
 
@@ -28,7 +27,7 @@ def player_commands():
         print("Turn #" + str(turn))
         print("Location= X: " + str(player_axis_x) + " Y: " + str(player_axis_y) + " Z: " + str(player_axis_z) + " D: " + str(player_direction))
         print()
-        player_choice = input("(F)oward (L)elt (R)ight (D)escend (A)scend (S)can (T)orpedo (Q)uit :")
+        player_choice = input("(F)oward (L)eft (R)ight (D)escend (A)scend (S)can (T)orpedo (Q)uit :")
         print()
     # exit
         if player_choice == "q":
@@ -99,9 +98,37 @@ def player_commands():
             break
     # firing
         if player_choice == "t":
-            print("Not yet implimented...")     
-            print()
-            break   
+            if player_axis_z == enemy_axis_z:
+                if player_direction == "↑N" and player_axis_x == enemy_axis_x:
+                    if player_axis_y < enemy_axis_y:
+                        target_hit()
+                    else:
+                        print("You fire a torpedo..   ..Miss!")
+                        break
+                if player_direction == "↓S" and player_axis_x == enemy_axis_x:
+                    if player_axis_y > enemy_axis_y:
+                        target_hit()
+                    else:
+                        print("You fire a torpedo..   ..Miss!")
+                        break
+                if player_direction == "→E" and player_axis_y == enemy_axis_y:
+                    if player_axis_x < enemy_axis_x:
+                        target_hit()
+                    else:
+                        print("You fire a torpedo..   ..Miss!")
+                        break    
+                if player_direction == "←W" and player_axis_y == enemy_axis_y:
+                    if player_axis_x < enemy_axis_x:
+                        target_hit()
+                    else:
+                        print("You fire a torpedo..   ..Miss!")
+                        break                
+                else:
+                    print("You fire a torpedo..   ..Miss!")
+                    break        
+            else:
+                print("You fire a torpedo..   ..Miss!")
+                break
     # error
         else:
             print("Invalid input..")
@@ -142,26 +169,35 @@ def enemy_movement():
             print("flooding it. The lights flicker and go dark. Game over...")
             print()
             while True:
-                player_choice = input("Do you wish to try again? Y/N")
+                player_choice = input("Do you wish to play again? Y/N")
                 print()
                 if player_choice == "y":
                     game_loop() 
                 if player_choice == "n":
+                    print("Thanks for playing!")             
                     exit()
                 else:
                     print("Invalid input..")
-                    print()
+                    print() 
 
+# target hit
 
-
-
-
-
-
-
-    
-        
-
+def target_hit():
+    print("You fire a torpedo..   ..Hit!")
+    print()
+    print("Target destroyed. You Win!")
+    print()
+    while True:
+        player_choice = input("Do you wish to play again? Y/N")
+        print()
+        if player_choice == "y":
+            game_loop() 
+        if player_choice == "n":
+            print("Thanks for playing!")             
+            exit()
+        else:
+            print("Invalid input..")
+            print() 
 # game loop    
  
 def game_loop():
