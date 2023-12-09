@@ -2,17 +2,6 @@
 
 import random
 
-# default variables
-
-turn = 0
-player_axis_y = 5
-player_axis_x = 5
-player_axis_z = 5
-player_direction = "↓S"
-enemy_axis_y = -5
-enemy_axis_x = -5
-enemy_axis_z = -5
-
 # player input
 
 def player_commands():
@@ -118,7 +107,7 @@ def player_commands():
                         print("You fire a torpedo..   ..Miss!")
                         break    
                 if player_direction == "←W" and player_axis_y == enemy_axis_y:
-                    if player_axis_x < enemy_axis_x:
+                    if player_axis_x > enemy_axis_x:
                         target_hit()
                     else:
                         print("You fire a torpedo..   ..Miss!")
@@ -144,17 +133,17 @@ def enemy_movement():
     global enemy_axis_x
     global enemy_axis_z
     while True:
-        if player_axis_x > enemy_axis_x:
-            enemy_axis_x = enemy_axis_x + 1
-            break
-        if player_axis_x < enemy_axis_x:
-            enemy_axis_x = enemy_axis_x - 1
-            break
         if player_axis_y > enemy_axis_y:
             enemy_axis_y = enemy_axis_y + 1
             break
         if player_axis_y < enemy_axis_y:
             enemy_axis_y = enemy_axis_y - 1
+            break
+        if player_axis_x > enemy_axis_x:
+            enemy_axis_x = enemy_axis_x + 1
+            break
+        if player_axis_x < enemy_axis_x:
+            enemy_axis_x = enemy_axis_x - 1
             break
         if player_axis_z > enemy_axis_z:
             enemy_axis_z = enemy_axis_z + 1
@@ -201,8 +190,23 @@ def target_hit():
 # game loop    
  
 def game_loop():
+    global player_axis_y
+    global player_axis_x
+    global player_axis_z
+    global player_direction
+    global player_choice
+    global enemy_axis_y
+    global enemy_axis_x
+    global enemy_axis_z
     global turn
     turn = 0
+    player_axis_y = 5
+    player_axis_x = 5
+    player_axis_z = 5
+    player_direction = "↓S"
+    enemy_axis_y = -5
+    enemy_axis_x = -5
+    enemy_axis_z = -5
     print("╔═════════════════╗")
     print("║ Submarine Game. ║")
     print("╚═════════════════╝")
