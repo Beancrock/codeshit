@@ -1,12 +1,6 @@
 '''
-
-╔═╦═╗
-╚╦╝╔╣
-╞╣╞╣║
-╔╩╗╚╣
-╚═╩═╝
-
-☻Ѫ
+if 0 < abs(guess - secret) <= 10:
+.lower()
 '''
 
 import random
@@ -16,7 +10,13 @@ import random
 player_loc_x = 3
 player_loc_y = 3
 
+player_points = 0
+treasure_hold = False
+
 creature_01_location = "x3y4"
+creature_turn = 0
+creature_01_reveal = False
+creature_countdown = 0
 
 x1y5 = " "
 x1y4 = " "
@@ -51,15 +51,48 @@ x5y1 = " "
 # game loop
 
 def game_loop():
+    lose_condition()
     creature_01_movement()
     creature_01_grid()
     grid_display()
+    lose_condition()
+    creature_visible_countdown()
+    
+# turns enemy is visible on map
+    
+def creature_visible_countdown():
+    global creature_countdown
+    global creature_01_reveal
+    if creature_countdown > 4:
+        creature_countdown = 4
+    if creature_01_reveal == True:
+        creature_countdown = creature_countdown - 1
+        if creature_countdown == 0:
+            print("The vision fades away, but taunting whispers remain.")
+            print()
+    if creature_countdown == 0:
+        creature_01_reveal = False
+        
+# introduction and instructions
+    
+def intro():
+    print('''
+          The object of this game is to navigate a maze, illuminating the path along the way while evading an evil entity.
+          As this entity moves about, it will plunge revealed areas back into darkness. You must find the treasure pile
+          and return with handfuls to the entrance, repeating the process to accumulate points. Navigating is done by 
+          entering the letter that corresponds with the direction you wish to move. That's it. You are represented by a "☻".
+          When reaching a corner or the center of the map, the evil entity will be temporarily revealed on the map for a
+          few turns. It will be represented by a "◊".
 
+          ''')
+    input("Press 'enter' to start...")
+    room_x3y1()          
 # grid display
     
 def grid_display():    
     global player_loc_x
     global player_loc_y
+    global player_points
     
     global x1y5
     global x1y4
@@ -92,6 +125,7 @@ def grid_display():
     global x5y1
     
     print()
+    print("Score:" + str(player_points))
     print(x1y5 + x2y5 + x3y5 + x4y5 + x5y5)
     print(x1y4 + x2y4 + x3y4 + x4y4 + x5y4)
     print(x1y3 + x2y3 + x3y3 + x4y3 + x5y3)
@@ -102,9 +136,8 @@ def grid_display():
 # creature movement
 
 def creature_01_movement():
-    global creature_loc_x
-    global creature_loc_y
     global creature_01_location
+    global creature_turn
     
     global x1y5
     global x1y4
@@ -137,107 +170,107 @@ def creature_01_movement():
     global x5y1
 
     if creature_01_location == "x1y1":
-        x1y1 = "╚"
+        x1y1 = " "
         choices = ["x2y1", "x1y2"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x2y1":
-        x2y1 = "╝"
+        x2y1 = " "
         choices = ["x1y1", "x2y2"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x3y1":
-        x3y1 = "╨"
+        x3y1 = " "
         choices = ["x3y2"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x4y1":
-        x4y1 = "╚"
+        x4y1 = " "
         choices = ["x4y2", "x5y1"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x5y1":
-        x5y1 = "╝"
+        x5y1 = " "
         choices = ["x4y1", "x5y2"]
         creature_01_location = random.choice(choices)
 
     elif creature_01_location == "x1y2":
-        x1y2 = "╠"
+        x1y2 = " "
         choices = ["x1y1", "x2y2", "x1y3"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x2y2":
-        x2y2 = "╦"
+        x2y2 = " "
         choices = ["x1y2", "x2y1", "x3y2"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x3y2":
-        x3y2 = "╬"
+        x3y2 = " "
         choices = ["x2y2", "x3y3", "x3y1", "x4y2"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x4y2":
-        x4y2 = "╦"
+        x4y2 = " "
         choices = ["x3y2", "x4y1", "x5y2"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x5y2":
-        x5y2 = "╣"
+        x5y2 = " "
         choices = ["x4y2", "x5y1", "x5y3"]
         creature_01_location = random.choice(choices)
 
     elif creature_01_location == "x1y3":
-        x1y3 = "╔"
+        x1y3 = " "
         choices = ["x1y2", "x2y3"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x2y3":
-        x2y3 = "╩"
+        x2y3 = " "
         choices = ["x1y3", "x2y4", "x3y3"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x3y3":
-        x3y3 = "╦"
+        x3y3 = " "
         choices = ["x2y3", "x3y2", "x4y3"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x4y3":
-        x4y3 = "╩"
+        x4y3 = " "
         choices = ["x3y3", "x4y4", "x5y3"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x5y3":
-        x5y3 = "╗"
+        x5y3 = " "
         choices = ["x4y3", "x5y2"]
         creature_01_location = random.choice(choices)
 
     elif creature_01_location == "x1y4":
-        x1y4 = "╚"
+        x1y4 = " "
         choices = ["x1y5", "x2y4"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x2y4":
-        x2y4 = "╣"
+        x2y4 = " "
         choices = ["x1y4", "x2y5", "x2y3"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x3y4":
-        x3y4 = "╨"
+        x3y4 = " "
         choices = ["x3y5"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x4y4":
-        x4y4 = "╠"
+        x4y4 = " "
         choices = ["x4y3", "x4y5", "x5y4"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x5y4":
-        x5y4 = "╝"
+        x5y4 = " "
         choices = ["x4y4", "x5y5"]
         creature_01_location = random.choice(choices)
 
     elif creature_01_location == "x1y5":
-        x1y5 = "╔"
+        x1y5 = " "
         choices = ["x2y5", "x1y4"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x2y5":
-        x2y5 = "╦"
+        x2y5 = " "
         choices = ["x1y5", "x2y4", "x3y5"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x3y5":
-        x3y5 = "╦"
+        x3y5 = " "
         choices = ["x2y5", "x3y4", "x4y5"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x4y5":
-        x4y5 = "╦"
+        x4y5 = " "
         choices = ["x3y5", "x4y4", "x5y5"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x5y5":
-        x5y5 = "╗"
+        x5y5 = " "
         choices = ["x4y5", "x5y4"]
         creature_01_location = random.choice(choices)                        
 
@@ -245,6 +278,9 @@ def creature_01_movement():
 
 def creature_01_grid():
     global creature_01_location
+    global creature_01_reveal
+    global creature_loc_x
+    global creature_loc_y
 
     global x1y5
     global x1y4
@@ -277,61 +313,142 @@ def creature_01_grid():
     global x5y1
      
     if creature_01_location == "x1y1":
-        x1y1 = "Ѫ"
+        if creature_01_reveal == True:
+            x1y1 = "◊"
+        if creature_01_reveal == False:
+            x1y1 = " "
     if creature_01_location == "x2y1":
-        x2y1 = "Ѫ"
+        if creature_01_reveal == True:
+            x2y1 = "◊"
+        if creature_01_reveal == False:
+            x2y1 = " "
     if creature_01_location == "x3y1":
-        x3y1 = "Ѫ"
+        if creature_01_reveal == True:
+            x3y1 = "◊"
+        if creature_01_reveal == False:
+            x3y1 = " "
     if creature_01_location == "x4y1":
-        x4y1 = "Ѫ"
+        if creature_01_reveal == True:
+            x4y1 = "◊"
+        if creature_01_reveal == False:
+            x4y1 = " "
     if creature_01_location == "x5y1":
-        x5y1 = "Ѫ"    
+        if creature_01_reveal == True:
+            x5y1 = "◊"
+        if creature_01_reveal == False:
+            x5y1 = " "    
 
     if creature_01_location == "x1y2":
-        x1y2 = "Ѫ"
+        if creature_01_reveal == True:
+            x1y2 = "◊"
+        if creature_01_reveal == False:
+            x1y2 = " "
     if creature_01_location == "x2y2":
-        x2y2 = "Ѫ"
+        if creature_01_reveal == True:
+            x2y2 = "◊"
+        if creature_01_reveal == False:
+            x2y2 = " "
     if creature_01_location == "x3y2":
-        x3y2 = "Ѫ"
+        if creature_01_reveal == True:
+            x3y2 = "◊"
+        if creature_01_reveal == False:
+            x3y2 = " "
     if creature_01_location == "x4y2":
-        x4y2 = "Ѫ"
+        if creature_01_reveal == True:
+            x4y2 = "◊"
+        if creature_01_reveal == False:
+            x4y2 = " "
     if creature_01_location == "x5y2":
-        x5y2 = "Ѫ"        
+        if creature_01_reveal == True:
+            x5y2 = "◊"
+        if creature_01_reveal == False:
+            x5y2 = " "        
 
     if creature_01_location == "x1y3":
-        x1y3 = "Ѫ"
+        if creature_01_reveal == True:
+            x1y3 = "◊"
+        if creature_01_reveal == False:
+            x1y3 = " "
     if creature_01_location == "x2y3":
-        x2y3 = "Ѫ"
+        if creature_01_reveal == True:
+            x2y3 = "◊"
+        if creature_01_reveal == False:
+            x2y3 = " "
     if creature_01_location == "x3y3":
-        x3y3 = "Ѫ"
+        if creature_01_reveal == True:
+            x3y3 = "◊"
+        if creature_01_reveal == False:
+            x3y3 = " "
     if creature_01_location == "x4y3":
-        x4y3 = "Ѫ"
+        if creature_01_reveal == True:
+            x4y3 = "◊"
+        if creature_01_reveal == False:
+            x4y3 = " "
     if creature_01_location == "x5y3":
-        x5y3 = "Ѫ"    
+        if creature_01_reveal == True:
+            x5y3 = "◊"
+        if creature_01_reveal == False:
+            x5y3 = " "    
 
     if creature_01_location == "x1y4":
-        x1y4 = "Ѫ"
+        if creature_01_reveal == True:
+            x1y4 = "◊"
+        if creature_01_reveal == False:
+            x1y4 = " "
     if creature_01_location == "x2y4":
-        x2y4 = "Ѫ"
+        if creature_01_reveal == True:
+            x2y4 = "◊"
+        if creature_01_reveal == False:
+            x2y4 = " "
     if creature_01_location == "x3y4":
-        x3y4 = "Ѫ"
+        if creature_01_reveal == True:
+            x3y4 = "◊"
+        if creature_01_reveal == False:
+            x3y4 = " "
     if creature_01_location == "x4y4":
-        x4y4 = "Ѫ"
+        if creature_01_reveal == True:
+            x4y4 = "◊"
+        if creature_01_reveal == False:
+            x4y4 = " "
     if creature_01_location == "x5y4":
-        x5y4 = "Ѫ"
+        if creature_01_reveal == True:
+            x5y4 = "◊"
+        if creature_01_reveal == False:
+            x5y4 = " "
 
     if creature_01_location == "x1y5":
-        x1y5 = "Ѫ"
+        if creature_01_reveal == True:
+            x1y5 = "◊"
+        if creature_01_reveal == False:
+            x1y5 = " "
     if creature_01_location == "x2y5":
-        x2y5 = "Ѫ"
+        if creature_01_reveal == True:
+            x2y5 = "◊"
+        if creature_01_reveal == False:
+            x2y5 = " "
     if creature_01_location == "x3y5":
-        x3y5 = "Ѫ"
+        if creature_01_reveal == True:
+            x3y5 = "◊"
+        if creature_01_reveal == False:
+            x3y5 = " "
     if creature_01_location == "x4y5":
-        x4y5 = "Ѫ"
+        if creature_01_reveal == True:
+            x4y5 = "◊"
+        if creature_01_reveal == False:
+            x4y5 = " "    
     if creature_01_location == "x5y5":
-        x5y5 = "Ѫ"                            
+        if creature_01_reveal == True:
+            x5y5 = "◊"
+        if creature_01_reveal == False:
+            x5y5 = " "                                    
 
 # collision check
+
+def lose_condition():
+    if creature_01_location == player_location:
+        print("An icy, unseen hand tears your heart from your chest...")
+        input("Game over.")
+        exit()
 
 # "rooms"
 
@@ -340,14 +457,21 @@ def room_x1y5():
     global player_loc_y
     global x1y5
     global player_location
+    global creature_01_reveal
+    global creature_countdown
     player_location = "x1y5"
     player_loc_x = 1
     player_loc_y = 5
     x1y5 = "☻"
+    creature_01_reveal = True
+    creature_countdown = creature_countdown + 4
     game_loop()
     x1y5 = "╔"
+    print("Etched into the walls and floor are a series of faintly glowing glyths and sigils. Upon standing on them,")
+    print("A horrifying visage appears in your mind's eye. (Evil Entity's current location marked on map.)")
+    print()
     while True:
-        player_choice = input("(S)outh (E)ast :")
+        player_choice = input("(S)outh (E)ast :").lower()
         print()
         if player_choice == "s":
             room_x1y4()
@@ -369,7 +493,7 @@ def room_x2y5():
     game_loop()
     x2y5 = "╦"
     while True:
-        player_choice = input("(S)outh (E)ast (W)est :")
+        player_choice = input("(S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "s":
             room_x2y4()
@@ -393,7 +517,7 @@ def room_x3y5():
     game_loop()
     x3y5 = "╦"
     while True:
-        player_choice = input("(S)outh (E)ast (W)est :")
+        player_choice = input("(S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "s":
             room_x3y4()
@@ -417,7 +541,7 @@ def room_x4y5():
     game_loop()
     x4y5 = "╦"
     while True:
-        player_choice = input("(S)outh (E)ast (W)est :")
+        player_choice = input("(S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "s":
             room_x4y4()
@@ -434,14 +558,21 @@ def room_x5y5():
     global player_loc_y
     global x5y5
     global player_location
+    global creature_01_reveal
+    global creature_countdown
     player_location = "x5y5"
     player_loc_x = 5
     player_loc_y = 5
     x5y5 = "☻"
+    creature_01_reveal = True
+    creature_countdown = creature_countdown + 4
     game_loop()
     x5y5 = "╗"
+    print("Etched into the walls and floor are a series of faintly glowing glyths and sigils. Upon standing on them,")
+    print("A horrifying visage appears in your mind's eye. (Evil Entity's current location marked on map.)")
+    print()
     while True:
-        player_choice = input("(S)outh (W)est: ")
+        player_choice = input("(S)outh (W)est: ").lower()
         print()
         if player_choice == "s":
             room_x5y4()
@@ -463,7 +594,7 @@ def room_x1y4():
     game_loop()
     x1y4 = "╚"
     while True:
-        player_choice = input("(N)orth (E)ast :")
+        player_choice = input("(N)orth (E)ast :").lower()
         print()
         if player_choice == "n":
             room_x1y5()
@@ -485,7 +616,7 @@ def room_x2y4():
     game_loop()
     x2y4 = "╣"
     while True:
-        player_choice = input("(N)orth (S)outh (W)est :")
+        player_choice = input("(N)orth (S)outh (W)est :").lower()
         print()
         if player_choice == "n":
             room_x2y5()
@@ -502,12 +633,18 @@ def room_x3y4():
     global player_loc_y
     global x3y4
     global player_location
+    global treasure_hold
+    global player_choice
     player_location = "x3y4"
     player_loc_x = 3
     player_loc_y = 4
     x3y4 = "☻"
     game_loop()
     x3y4 = "╨"
+    if treasure_hold == False:
+        treasure_hold = True
+        print("Before you lies a pile of treasure, at the foot of a cracked sarcophagus. You grab a handful of coins and gems.")
+        print()
     while True:
         player_choice = input("(N)orth :")
         print()
@@ -529,7 +666,7 @@ def room_x4y4():
     game_loop()
     x4y4 = "╠"
     while True:
-        player_choice = input("(N)orth (S)outh (E)ast :")
+        player_choice = input("(N)orth (S)outh (E)ast :").lower()
         print()
         if player_choice == "n":
             room_x4y5()
@@ -553,7 +690,7 @@ def room_x5y4():
     game_loop()
     x5y4 = "╝"
     while True:
-        player_choice = input("(N)orth (W)est :")
+        player_choice = input("(N)orth (W)est :").lower()
         print()
         if player_choice == "n":
             room_x5y5()
@@ -575,10 +712,10 @@ def room_x1y3():
     game_loop()
     x1y3 = "╔"
     while True:
-        player_choice = input("(S)outh (E)ast :")
+        player_choice = input("(S)outh (E)ast :").lower()
         print()
         if player_choice == "s":
-            room_x1y1()
+            room_x1y2()
         if player_choice == "e":
             room_x2y3()
         else:
@@ -597,7 +734,7 @@ def room_x2y3():
     game_loop()
     x2y3 = "╩"
     while True:
-        player_choice = input("(N)orth (E)ast (W)est :")
+        player_choice = input("(N)orth (E)ast (W)est :").lower()
         print()
         if player_choice == "n":
             room_x2y4()
@@ -614,14 +751,21 @@ def room_x3y3():
     global player_loc_y
     global x3y3
     global player_location
+    global creature_01_reveal
+    global creature_countdown
     player_location = "x3y3"
     player_loc_x = 3
     player_loc_y = 3
     x3y3 = "☻"
+    creature_01_reveal = True
+    creature_countdown = creature_countdown + 4
     game_loop()
     x3y3 = "╦"
+    print("Etched into the walls and floor are a series of faintly glowing glyths and sigils. Upon standing on them,")
+    print("A horrifying visage appears in your mind's eye. (Evil Entity's current location marked on map.)")
+    print()
     while True:
-        player_choice = input("(S)outh (E)ast (W)est :")
+        player_choice = input("(S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "s":
             room_x3y2()
@@ -645,7 +789,7 @@ def room_x4y3():
     game_loop()
     x4y3 = "╩"
     while True:
-        player_choice = input("(N)orth (E)ast (W)est :")
+        player_choice = input("(N)orth (E)ast (W)est :").lower()
         print()
         if player_choice == "n":
             room_x4y4()
@@ -669,7 +813,7 @@ def room_x5y3():
     game_loop()
     x5y3 = "╗"
     while True:
-        player_choice = input("(S)outh (W)est :")
+        player_choice = input("(S)outh (W)est :").lower()
         print()
         if player_choice == "s":
             room_x5y2()
@@ -692,7 +836,7 @@ def room_x1y2():
     game_loop()
     x1y2 = "╠"
     while True:
-        player_choice = input("(N)orth (S)outh (E)ast: ")
+        player_choice = input("(N)orth (S)outh (E)ast: ").lower()
         print()
         if player_choice == "n":
             room_x1y3()
@@ -716,7 +860,7 @@ def room_x2y2():
     game_loop()
     x2y2 = "╦"
     while True:
-        player_choice = input("(S)outh (E)ast (W)est :")
+        player_choice = input("(S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "s":
             room_x2y1()
@@ -740,7 +884,7 @@ def room_x3y2():
     game_loop()
     x3y2 = "╬"
     while  True:
-        player_choice = input("(N)orth (S)outh (E)ast (W)est :")
+        player_choice = input("(N)orth (S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "n":
             room_x3y3()
@@ -766,7 +910,7 @@ def room_x4y2():
     game_loop()
     x4y2 = "╦"
     while True:
-        player_choice = input("(S)outh (E)ast (W)est :")
+        player_choice = input("(S)outh (E)ast (W)est :").lower()
         print()
         if player_choice == "s":
             room_x4y1()
@@ -790,7 +934,7 @@ def room_x5y2():
     game_loop()
     x5y2 = "╣"
     while True:
-        player_choice = input("(N)orth (S)outh (W)est :")
+        player_choice = input("(N)orth (S)outh (W)est :").lower()
         print()
         if player_choice == "n":
             room_x5y3()
@@ -807,14 +951,21 @@ def room_x1y1():
     global player_loc_y
     global x1y1
     global player_location
+    global creature_01_reveal
+    global creature_countdown
     player_location = "x1y1"
     player_loc_x = 1
     player_loc_y = 1
     x1y1 = "☻"
+    creature_01_reveal = True
+    creature_countdown = creature_countdown + 4
     game_loop()
     x1y1 = "╚"
+    print("Etched into the walls and floor are a series of faintly glowing glyths and sigils. Upon standing on them,")
+    print("A horrifying visage appears in your mind's eye. (Evil Entity's current location marked on map.)")
+    print()
     while True:
-        player_choice = input("(N)orth (E)ast :")
+        player_choice = input("(N)orth (E)ast :").lower()
         print()
         if player_choice == "n":
             room_x1y2()
@@ -836,7 +987,7 @@ def room_x2y1():
     game_loop()
     x2y1 = "╝"
     while True:
-        player_choice = input("(N)orth (W)est :")
+        player_choice = input("(N)orth (W)est :").lower()
         print()
         if player_choice == "n":
             room_x2y2()
@@ -851,14 +1002,22 @@ def room_x3y1():
     global player_loc_y
     global x3y1
     global player_location
+    global treasure_hold
+    global player_choice
+    global player_points
     player_location = "x3y1"
     player_loc_x = 3
     player_loc_y = 1
     x3y1 = "☻"
     game_loop()
     x3y1 = "╨"
+    if treasure_hold ==True:
+        treasure_hold = False
+        player_points = player_points + 1
+        print("You drop your spoils upon the floor.")
+        print()
     while True:
-        player_choice = input("(N)orth :")
+        player_choice = input("(N)orth :").lower()
         print()
         if player_choice == "n":
             room_x3y2()
@@ -878,7 +1037,7 @@ def room_x4y1():
     game_loop()
     x4y1 = "╚"
     while True:
-        player_choice = input("(N)orth (E)ast :")
+        player_choice = input("(N)orth (E)ast :").lower()
         print()
         if player_choice == "n":
             room_x4y2()
@@ -893,14 +1052,21 @@ def room_x5y1():
     global player_loc_y
     global x5y1
     global player_location
+    global creature_01_reveal
+    global creature_countdown
     player_location = "x5y1"
     player_loc_x = 5
     player_loc_y = 1
     x5y1 = "☻"
+    creature_01_reveal = True
+    creature_countdown = creature_countdown + 4
     game_loop()
     x5y1 = "╝"
+    print("Etched into the walls and floor are a series of faintly glowing glyths and sigils. Upon standing on them,")
+    print("A horrifying visage appears in your mind's eye. (Evil Entity's current location marked on map.)")
+    print()
     while True:
-        player_choice = input("(N)orth (W)est :")
+        player_choice = input("(N)orth (W)est :").lower()
         print()
         if player_choice == "n":
             room_x5y2()
@@ -912,4 +1078,4 @@ def room_x5y1():
 
 # initiate
 
-room_x3y1()
+intro()
