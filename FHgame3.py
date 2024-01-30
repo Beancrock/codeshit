@@ -12,6 +12,9 @@ player_points = 0
 creature_01_loc_x = 0
 creature_01_loc_y = 0
 
+goal_top = "▼"
+goal_bottom = " "
+
 creature_01_location = "void"
 
 x5y1 = "╝"
@@ -102,14 +105,18 @@ def grid_display():
     global x5y3
     global x5y2
     global x5y1
+
+    global goal_top
+    global goal_bottom
     
     print()
-    print("    Score:" + str(player_points))
-    print("    " + x1y5 + x2y5 + x3y5 + x4y5 + x5y5)
-    print("    " + x1y4 + x2y4 + x3y4 + x4y4 + x5y4)
-    print("    " + x1y3 + x2y3 + x3y3 + x4y3 + x5y3)
-    print("    " + x1y2 + x2y2 + x3y2 + x4y2 + x5y2)
-    print("    " + x1y1 + x2y1 + x3y1 + x4y1 + x5y1)
+    print("       " + goal_top)
+    print("     " + x1y5 + x2y5 + x3y5 + x4y5 + x5y5 + " Score")
+    print("     " + x1y4 + x2y4 + x3y4 + x4y4 + x5y4 + " :" + str(player_points))
+    print("     " + x1y3 + x2y3 + x3y3 + x4y3 + x5y3)
+    print("     " + x1y2 + x2y2 + x3y2 + x4y2 + x5y2)
+    print("     " + x1y1 + x2y1 + x3y1 + x4y1 + x5y1)
+    print("       " + goal_bottom)
     print()
 
 # creature movement
@@ -408,10 +415,17 @@ def room_x3y5():
     global player_loc_y
     global x3y5
     global player_location
+    global player_points
+    global goal_top
+    global goal_bottom
     player_location = "x3y5"
     player_loc_x = 3
     player_loc_y = 5
     x3y5 = "☻"
+    if goal_top == "▼":
+        player_points = player_points + 1
+        goal_top = " "
+        goal_bottom = "▲"
     game_loop()
     x3y5 = "╥"
     while True:
@@ -876,13 +890,18 @@ def room_x3y1():
     global player_loc_y
     global x3y1
     global player_location
-    global treasure_hold
     global player_choice
     global player_points
+    global goal_top
+    global goal_bottom
     player_location = "x3y1"
     player_loc_x = 3
     player_loc_y = 1
     x3y1 = "☻"
+    if goal_bottom == "▲":
+        player_points = player_points + 1
+        goal_top = "▼"
+        goal_bottom = " "
     game_loop()
     x3y1 = "╨"
     while True:
