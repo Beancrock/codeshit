@@ -4,48 +4,98 @@ if 0 < abs(guess - secret) <= 10:
 
 import random
 
-# default values
+# default values + introduction and instructions
+    
+def intro():
+    global player_loc_x
+    global player_loc_y
+    global creature_01_loc_x
+    global creature_01_loc_y
+    global player_points
+    global creature_01_location
 
-player_loc_x = 0
-player_loc_y = 0
-player_points = 0
-creature_01_loc_x = 0
-creature_01_loc_y = 0
+    global x1y5
+    global x1y4
+    global x1y3
+    global x1y2
+    global x1y1
+    
+    global x2y5
+    global x2y4
+    global x2y3
+    global x2y2
+    global x2y1
+    
+    global x3y5
+    global x3y4
+    global x3y3
+    global x3y2
+    global x3y1
 
-goal_top = "▼"
-goal_bottom = " "
+    global x4y5
+    global x4y4
+    global x4y3
+    global x4y2
+    global x4y1
+    
+    global x5y5
+    global x5y4
+    global x5y3
+    global x5y2
+    global x5y1
 
-creature_01_location = "void"
+    global goal_top
+    global goal_bottom
 
-x5y1 = "╝"
-x4y1 = "╚"
-x3y1 = "╨"
-x2y1 = "╝"
-x1y1 = "╚"
+    player_loc_x = 0
+    player_loc_y = 0
+    player_points = 0
+    creature_01_loc_x = 0
+    creature_01_loc_y = 0
 
-x5y2 = "╣"
-x4y2 = "╦"
-x3y2 = "╬"
-x2y2 = "╦"
-x1y2 = "╠"
+    goal_top = "▼"
+    goal_bottom = " "
 
-x5y3 = "╗"
-x4y3 = "╩"
-x3y3 = "╦"
-x2y3 = "╩"
-x1y3 = "╔"
+    creature_01_location = "void"
 
-x5y4 = "╝"
-x4y4 = "╬"
-x3y4 = "╩"
-x2y4 = "╬"
-x1y4 = "╚"
+    x5y1 = "╝"
+    x4y1 = "╚"
+    x3y1 = "╨"
+    x2y1 = "╝"
+    x1y1 = "╚"
 
-x5y5 = "╗"
-x4y5 = "╔"
-x3y5 = "╥"
-x2y5 = "╗"
-x1y5 = "╔"
+    x5y2 = "╣"
+    x4y2 = "╦"
+    x3y2 = "╬"
+    x2y2 = "╦"
+    x1y2 = "╠"
+
+    x5y3 = "╗"
+    x4y3 = "╩"
+    x3y3 = "╦"
+    x2y3 = "╩"
+    x1y3 = "╔"
+
+    x5y4 = "╝"
+    x4y4 = "╬"
+    x3y4 = "╩"
+    x2y4 = "╬"
+    x1y4 = "╚"
+
+    x5y5 = "╗"
+    x4y5 = "╔"
+    x3y5 = "╥"
+    x2y5 = "╗"
+    x1y5 = "╔"
+
+    print('''
+          The object of this game is to navigate your smiley ("☻") through a maze while evading the evil smiley ("☺").
+          Navigation is done by entering the letter that corresponds with the direction you wish to move and then by
+          hitting enter. You score points by reaching the area marked by an arrow. You lose if the evil smiley reaches you.
+          
+          ''')
+    input("Press 'enter' to start...")
+    room_x3y1()          
 
 # game loop
 
@@ -55,18 +105,7 @@ def game_loop():
     creature_01_grid()
     lose_condition()
     grid_display()
-    
-# introduction and instructions
-    
-def intro():
-    print('''
-          The object of this game is to navigate your smiley ("☻") through a maze while evading the evil smiley ("☺").
-          Navigation is done by entering the letter that corresponds with the direction you wish to move and then by
-          hitting enter. 
-          
-          ''')
-    input("Press 'enter' to start...")
-    room_x3y1()          
+
 # grid display
     
 def grid_display():    
@@ -110,15 +149,15 @@ def grid_display():
     global goal_bottom
     
     print()
+    print("Score " + str(player_points))
     print("       " + goal_top)
-    print("     " + x1y5 + x2y5 + x3y5 + x4y5 + x5y5 + " Score")
-    print("     " + x1y4 + x2y4 + x3y4 + x4y4 + x5y4 + " :" + str(player_points))
+    print("     " + x1y5 + x2y5 + x3y5 + x4y5 + x5y5)
+    print("     " + x1y4 + x2y4 + x3y4 + x4y4 + x5y4)
     print("     " + x1y3 + x2y3 + x3y3 + x4y3 + x5y3)
     print("     " + x1y2 + x2y2 + x3y2 + x4y2 + x5y2)
     print("     " + x1y1 + x2y1 + x3y1 + x4y1 + x5y1)
     print("       " + goal_bottom)
-    print()
-
+  
 # creature movement
 
 def creature_01_movement():
@@ -361,8 +400,15 @@ def creature_01_grid():
 def lose_condition():
     if creature_01_location == player_location:
         grid_display()
-        input("Game over.")
-        exit()
+        while True:
+            player_choice = input("Game over. Play again? (Y)es/(N)o :").lower()
+            print()
+            if player_choice == "y":
+                intro()
+            if player_choice == "n":
+                exit()
+            else:
+                print("Invalid input..")
 
 # "rooms"
 
