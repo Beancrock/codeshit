@@ -11,8 +11,11 @@ def intro():
     global player_loc_y
     global creature_01_loc_x
     global creature_01_loc_y
+    global creature_02_loc_x
+    global creature_02_loc_y
     global player_points
     global creature_01_location
+    global creature_02_location
 
     global x1y5
     global x1y4
@@ -52,11 +55,15 @@ def intro():
     player_points = 0
     creature_01_loc_x = 0
     creature_01_loc_y = 0
+    creature_02_loc_x = 0
+    creature_02_loc_y = 0
+
 
     goal_top = "▼"
     goal_bottom = " "
 
     creature_01_location = "void"
+    creature_02_location = "void"
 
     x5y1 = "╝"
     x4y1 = "╚"
@@ -89,13 +96,13 @@ def intro():
     x1y5 = "╔"
 
     print('''
-          The object of this game is to navigate your smiley ("☻") through a maze while evading the evil smiley ("☺").
+          The object of this game is to navigate your smiley ("☻") through a maze while evading the evil smilies ("☺").
           Navigation is done by entering the letter that corresponds with the direction you wish to move and then by
-          hitting enter. You score points by reaching the area marked by an arrow. You lose if the evil smiley reaches you.
+          hitting enter. You score points by reaching the area marked by an arrow. You lose if an evil smiley reaches you.
           
           ''')
     input("Press 'enter' to start...")
-    room_x3y1()          
+    room_x3y3()          
 
 # game loop
 
@@ -103,6 +110,8 @@ def game_loop():
     lose_condition()
     creature_01_movement()
     creature_01_grid()
+    creature_02_movement()
+    creature_02_grid()
     lose_condition()
     grid_display()
 
@@ -158,7 +167,7 @@ def grid_display():
     print("     " + x1y1 + x2y1 + x3y1 + x4y1 + x5y1)
     print("       " + goal_bottom)
   
-# creature movement
+# creature no.1 movement
 
 def creature_01_movement():
     global creature_01_location
@@ -298,9 +307,151 @@ def creature_01_movement():
     elif creature_01_location == "x5y5":
         x5y5 = "╗"
         choices = ["x4y5", "x5y4"]
-        creature_01_location = random.choice(choices)                        
+        creature_01_location = random.choice(choices)
 
-# creature display
+# creature no.2 movement
+
+def creature_02_movement():
+    global creature_02_location
+    global creature_02_loc_x
+    global creature_02_loc_y
+        
+    global x1y5
+    global x1y4
+    global x1y3
+    global x1y2
+    global x1y1
+    
+    global x2y5
+    global x2y4
+    global x2y3
+    global x2y2
+    global x2y1
+    
+    global x3y5
+    global x3y4
+    global x3y3
+    global x3y2
+    global x3y1
+
+    global x4y5
+    global x4y4
+    global x4y3
+    global x4y2
+    global x4y1
+    
+    global x5y5
+    global x5y4
+    global x5y3
+    global x5y2
+    global x5y1
+
+    if creature_02_location == "void":
+        creature_02_location = "x3y1"
+    elif creature_02_location == "x1y1":
+        x1y1 = "╚"
+        choices = ["x2y1", "x1y2"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x2y1":
+        x2y1 = "╝"
+        choices = ["x1y1", "x2y2"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x3y1":
+        x3y1 = "╨"
+        creature_02_location = "x3y2"
+    elif creature_02_location == "x4y1":
+        x4y1 = "╚"
+        choices = ["x4y2", "x5y1"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x5y1":
+        x5y1 = "╝"
+        choices = ["x4y1", "x5y2"]
+        creature_02_location = random.choice(choices)
+
+    elif creature_02_location == "x1y2":
+        x1y2 = "╠"
+        choices = ["x1y1", "x2y2", "x1y3"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x2y2":
+        x2y2 = "╦"
+        choices = ["x1y2", "x2y1", "x3y2"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x3y2":
+        x3y2 = "╬"
+        choices = ["x2y2", "x3y3", "x3y1", "x4y2"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x4y2":
+        x4y2 = "╦"
+        choices = ["x3y2", "x4y1", "x5y2"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x5y2":
+        x5y2 = "╣"
+        choices = ["x4y2", "x5y1", "x5y3"]
+        creature_02_location = random.choice(choices)
+
+    elif creature_02_location == "x1y3":
+        x1y3 = "╔"
+        choices = ["x1y2", "x2y3"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x2y3":
+        x2y3 = "╩"
+        choices = ["x1y3", "x2y4", "x3y3"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x3y3":
+        x3y3 = "╦"
+        choices = ["x2y3", "x3y2", "x4y3"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x4y3":
+        x4y3 = "╩"
+        choices = ["x3y3", "x4y4", "x5y3"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x5y3":
+        x5y3 = "╗"
+        choices = ["x4y3", "x5y2"]
+        creature_02_location = random.choice(choices)
+
+    elif creature_02_location == "x1y4":
+        x1y4 = "╚"
+        choices = ["x1y5", "x2y4"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x2y4":
+        x2y4 = "╬"
+        choices = ["x1y4", "x3y4", "x2y5", "x2y3"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x3y4":
+        x3y4 = "╩"
+        choices = ["x2y4", "x3y5", "x4y4"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x4y4":
+        x4y4 = "╬"
+        choices = ["x4y3", "x4y5", "x3y4", "x5y4"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x5y4":
+        x5y4 = "╝"
+        choices = ["x4y4", "x5y5"]
+        creature_02_location = random.choice(choices)
+
+    elif creature_02_location == "x1y5":
+        x1y5 = "╔"
+        choices = ["x2y5", "x1y4"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x2y5":
+        x2y5 = "╗"
+        choices = ["x1y5", "x2y4"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x3y5":
+        x3y5 = "╥"
+        creature_02_location = "x3y4"
+    elif creature_02_location == "x4y5":
+        x4y5 = "╔"
+        choices = ["x4y4", "x5y5"]
+        creature_02_location = random.choice(choices)
+    elif creature_02_location == "x5y5":
+        x5y5 = "╗"
+        choices = ["x4y5", "x5y4"]
+        creature_02_location = random.choice(choices)                                
+
+# creature no.1 display
 
 def creature_01_grid():
     global creature_01_location
@@ -394,11 +545,102 @@ def creature_01_grid():
     if creature_01_location == "x5y5":
         x5y5 = "☺"
                                             
+# creature no.2 display
+
+def creature_02_grid():
+    global creature_02_location
+    global creature_02_loc_x
+    global creature_02_loc_y
+
+    global x1y5
+    global x1y4
+    global x1y3
+    global x1y2
+    global x1y1
+    
+    global x2y5
+    global x2y4
+    global x2y3
+    global x2y2
+    global x2y1
+    
+    global x3y5
+    global x3y4
+    global x3y3
+    global x3y2
+    global x3y1
+
+    global x4y5
+    global x4y4
+    global x4y3
+    global x4y2
+    global x4y1
+    
+    global x5y5
+    global x5y4
+    global x5y3
+    global x5y2
+    global x5y1
+     
+    if creature_02_location == "x1y1":
+        x1y1 = "☺"
+    if creature_02_location == "x2y1":
+        x2y1 = "☺"
+    if creature_02_location == "x3y1":
+        x3y1 = "☺"
+    if creature_02_location == "x4y1":
+        x4y1 = "☺"
+    if creature_02_location == "x5y1":
+        x5y1 = "☺"
+           
+    if creature_02_location == "x1y2":
+        x1y2 = "☺"
+    if creature_02_location == "x2y2":
+        x2y2 = "☺"
+    if creature_02_location == "x3y2":
+        x3y2 = "☺"
+    if creature_02_location == "x4y2":  
+        x4y2 = "☺"
+    if creature_02_location == "x5y2":
+        x5y2 = "☺"
+               
+    if creature_02_location == "x1y3":
+        x1y3 = "☺"
+    if creature_02_location == "x2y3":
+        x2y3 = "☺"
+    if creature_02_location == "x3y3":
+        x3y3 = "☺"
+    if creature_02_location == "x4y3":
+        x4y3 = "☺"
+    if creature_02_location == "x5y3":
+        x5y3 = "☺"
+  
+    if creature_02_location == "x1y4":
+        x1y4 = "☺"
+    if creature_02_location == "x2y4":
+        x2y4 = "☺"
+    if creature_02_location == "x3y4":
+        x3y4 = "☺"
+    if creature_02_location == "x4y4":
+        x4y4 = "☺"
+    if creature_02_location == "x5y4":
+        x5y4 = "☺"
+        
+    if creature_02_location == "x1y5":
+        x1y5 = "☺"
+    if creature_02_location == "x2y5":
+        x2y5 = "☺"
+    if creature_02_location == "x3y5":
+        x3y5 = "☺"
+    if creature_02_location == "x4y5":
+        x4y5 = "☺"
+    if creature_02_location == "x5y5":
+        x5y5 = "☺"
 
 # collision check
 
 def lose_condition():
-    if creature_01_location == player_location:
+    if player_location == creature_01_location or player_location == creature_02_location:
         grid_display()
         while True:
             player_choice = input("Game over. Play again? (Y)es/(N)o :").lower()
