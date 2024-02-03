@@ -307,7 +307,7 @@ def creature_01_movement():
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x4y1":
         x4y1 = "╦"
-        choices = ["s_exit", "x3y1" "x5y1"]
+        choices = ["s_exit", "x3y1", "x5y1"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "x5y1":
         x5y1 = "╩"
@@ -442,11 +442,11 @@ def creature_01_movement():
 
     elif creature_01_location == "n_exit":
         n_exit = "╥"
-        choices = ["x4y1", "s_exit"]
+        choices = ["x4y5", "s_exit"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "s_exit":
         s_exit = "╨"
-        choices = ["x4y5", "n_exit"]
+        choices = ["x4y1", "n_exit"]
         creature_01_location = random.choice(choices)
     elif creature_01_location == "w_exit":
         w_exit = "╞"
@@ -665,11 +665,11 @@ def creature_02_movement():
         creature_02_location = random.choice(choices)
     elif creature_02_location == "x4y1":
         x4y1 = "╦"
-        choices = ["s_exit", "x3y1" "x5y1"]
+        choices = ["s_exit", "x3y1", "x5y1"]
         creature_02_location = random.choice(choices)
     elif creature_02_location == "x5y1":
         x5y1 = "╩"
-        choices = ["x4y1", "x5y1"]
+        choices = ["x4y1", "x6y1"]
         creature_02_location = random.choice(choices)
 
     elif creature_02_location == "x1y2":
@@ -800,11 +800,11 @@ def creature_02_movement():
 
     elif creature_02_location == "n_exit":
         n_exit = "╥"
-        choices = ["x4y1", "s_exit"]
+        choices = ["x4y5", "s_exit"]
         creature_02_location = random.choice(choices)
     elif creature_02_location == "s_exit":
         s_exit = "╨"
-        choices = ["x4y5", "n_exit"]
+        choices = ["x4y1", "n_exit"]
         creature_02_location = random.choice(choices)
     elif creature_02_location == "w_exit":
         w_exit = "╞"
@@ -1024,11 +1024,11 @@ def creature_03_movement():
         creature_03_location = random.choice(choices)
     elif creature_03_location == "x4y1":
         x4y1 = "╦"
-        choices = ["s_exit", "x3y1" "x5y1"]
+        choices = ["s_exit", "x3y1", "x5y1"]
         creature_03_location = random.choice(choices)
     elif creature_03_location == "x5y1":
         x5y1 = "╩"
-        choices = ["x4y1", "x5y1"]
+        choices = ["x4y1", "x6y1"]
         creature_03_location = random.choice(choices)
 
     elif creature_03_location == "x1y2":
@@ -1159,11 +1159,11 @@ def creature_03_movement():
 
     elif creature_03_location == "n_exit":
         n_exit = "╥"
-        choices = ["x4y1", "s_exit"]
+        choices = ["x4y5", "s_exit"]
         creature_03_location = random.choice(choices)
     elif creature_03_location == "s_exit":
         s_exit = "╨"
-        choices = ["x4y5", "n_exit"]
+        choices = ["x4y1", "n_exit"]
         creature_03_location = random.choice(choices)
     elif creature_03_location == "w_exit":
         w_exit = "╞"
@@ -1382,11 +1382,11 @@ def creature_04_movement():
         creature_04_location = random.choice(choices)
     elif creature_04_location == "x4y1":
         x4y1 = "╦"
-        choices = ["s_exit", "x3y1" "x5y1"]
+        choices = ["s_exit", "x3y1", "x5y1"]
         creature_04_location = random.choice(choices)
     elif creature_04_location == "x5y1":
         x5y1 = "╩"
-        choices = ["x4y1", "x5y1"]
+        choices = ["x4y1", "x6y1"]
         creature_04_location = random.choice(choices)
 
     elif creature_04_location == "x1y2":
@@ -1517,11 +1517,11 @@ def creature_04_movement():
 
     elif creature_04_location == "n_exit":
         n_exit = "╥"
-        choices = ["x4y1", "s_exit"]
+        choices = ["x4y5", "s_exit"]
         creature_04_location = random.choice(choices)
     elif creature_04_location == "s_exit":
         s_exit = "╨"
-        choices = ["x4y5", "n_exit"]
+        choices = ["x4y1", "n_exit"]
         creature_04_location = random.choice(choices)
     elif creature_04_location == "w_exit":
         w_exit = "╞"
