@@ -20,6 +20,8 @@ def intro():
     global player_loc_x
     global player_loc_y
     global player_points
+    global player_location
+    global treasure_location
 
     global creature_01_loc_x
     global creature_01_loc_y
@@ -84,7 +86,8 @@ def intro():
  
     player_loc_x = 0
     player_loc_y = 0
-    player_points = 0
+    player_points = -1
+    treasure_location = "x4y3"
     
     creature_01_loc_x = 0
     creature_01_loc_y = 0
@@ -159,6 +162,7 @@ def intro():
 # game loop
 
 def game_loop():
+    treasure()
     lose_condition()
     creature_01_movement()
     creature_01_grid()
@@ -1669,6 +1673,136 @@ def creature_04_grid():
         w_exit = "☺"
     if creature_04_location == "e_exit":
         e_exit = "☺"                
+
+# scoring
+
+def treasure():
+    global treasure_location
+    global player_location
+    global player_points
+
+
+    global x1y5
+    global x1y4
+    global x1y3
+    global x1y2
+    global x1y1
+    
+    global x2y5
+    global x2y4
+    global x2y3
+    global x2y2
+    global x2y1
+    
+    global x3y5
+    global x3y4
+    global x3y3
+    global x3y2
+    global x3y1
+
+    global x4y5
+    global x4y4
+    global x4y3
+    global x4y2
+    global x4y1
+    
+    global x5y5
+    global x5y4
+    global x5y3
+    global x5y2
+    global x5y1
+
+    global x6y5
+    global x6y4
+    global x6y3
+    global x6y2
+    global x6y1
+
+    global x7y5
+    global x7y4
+    global x7y3
+    global x7y2
+    global x7y1
+    
+    if treasure_location == player_location:
+        player_points = player_points + 1
+        choices = ["x1y1", "x2y1", "x3y1", "x4y1", "x5y1", "x6y1", "x7y1", "x1y2", "x2y2", "x3y2", "x4y2", "x5y2", "x6y2", "x7y2", "x1y3", "x2y3", "x3y3", "x4y3", "x5y3", "x6y3", "x7y3", "x1y4", "x2y4", "x3y4", "x4y4", "x5y4", "x6y4", "x7y4", "x1y5", "x2y5", "x3y5", "x4y5", "x5y5", "x6y5", "x7y5"]
+        treasure_location = random.choice(choices)
+
+    if treasure_location == "x1y1":
+        x1y1 = "♦"
+    if treasure_location == "x2y1":
+        x2y1 = "♦"
+    if treasure_location == "x3y1":
+        x3y1 = "♦"
+    if treasure_location == "x4y1":
+        x4y1 = "♦"
+    if treasure_location == "x5y1":
+        x5y1 = "♦"
+    if treasure_location == "x6y1":
+        x6y1 = "♦"
+    if treasure_location == "x7y1":
+        x7y1 = "♦"    
+           
+    if treasure_location == "x1y2":
+        x1y2 = "♦"
+    if treasure_location == "x2y2":
+        x2y2 = "♦"
+    if treasure_location == "x3y2":
+        x3y2 = "♦"
+    if treasure_location == "x4y2":  
+        x4y2 = "♦"
+    if treasure_location == "x5y2":
+        x5y2 = "♦"
+    if treasure_location == "x6y2":  
+        x6y2 = "♦"
+    if treasure_location == "x7y2":
+        x7y2 = "♦"    
+               
+    if treasure_location == "x1y3":
+        x1y3 = "♦"
+    if treasure_location == "x2y3":
+        x2y3 = "♦"
+    if treasure_location == "x3y3":
+        x3y3 = "♦"
+    if treasure_location == "x4y3":
+        x4y3 = "♦"
+    if treasure_location == "x5y3":
+        x5y3 = "♦"
+    if treasure_location == "x6y3":
+        x6y3 = "♦"
+    if treasure_location == "x7y3":
+        x7y3 = "♦"    
+  
+    if treasure_location == "x1y4":
+        x1y4 = "♦"
+    if treasure_location == "x2y4":
+        x2y4 = "♦"
+    if treasure_location == "x3y4":
+        x3y4 = "♦"
+    if treasure_location == "x4y4":
+        x4y4 = "♦"
+    if treasure_location == "x5y4":
+        x5y4 = "♦"
+    if treasure_location == "x6y4":
+        x6y4 = "♦"
+    if treasure_location == "x7y4":
+        x7y4 = "♦"    
+     
+    if treasure_location == "x1y5":
+        x1y5 = "♦"
+    if treasure_location == "x2y5":
+        x2y5 = "♦"
+    if treasure_location == "x3y5":
+        x3y5 = "♦"
+    if treasure_location == "x4y5":
+        x4y5 = "♦"
+    if treasure_location == "x5y5":
+        x5y5 = "♦"
+    if treasure_location == "x6y5":
+        x6y5 = "♦"
+    if treasure_location == "x7y5":
+        x7y5 = "♦"
 
 # collision check
 
