@@ -13,6 +13,8 @@ if 0 < abs(guess - secret) <= 10:
 '''
 
 import random
+global high_score
+high_score = 0
 
 # default values + introduction and instructions
 
@@ -190,6 +192,7 @@ def grid_display():
     global creature_01_loc_x
     global creature_01_loc_y
     global player_points
+    global high_score
     global turns
     
     global x1y5
@@ -240,14 +243,16 @@ def grid_display():
     global s_exit
     
     print()
-    print("Score " + str(player_points) + " Turns " + str(turns))
-    print("    ┌───" + n_exit + "───┐")
-    print("    │" + x1y5 + x2y5 + x3y5 + x4y5 + x5y5 + x6y5 + x7y5 + "│")
-    print("    │" + x1y4 + x2y4 + x3y4 + x4y4 + x5y4 + x6y4 + x7y4 + "│")
-    print("    " + w_exit + x1y3 + x2y3 + x3y3 + x4y3 + x5y3 + x6y3 + x7y3 + e_exit)
-    print("    │" + x1y2 + x2y2 + x3y2 + x4y2 + x5y2 + x6y2 + x7y2 + "│")
-    print("    │" + x1y1 + x2y1 + x3y1 + x4y1 + x5y1 + x6y1 + x7y1 + "│")
-    print("    └───" + s_exit + "───┘")
+    print("Score [" + str(player_points) + "] High [" + str(high_score) + "] Turns [" + str(turns) + "]")
+    print()
+    print("        ┌───" + n_exit + "───┐")
+    print("        │" + x1y5 + x2y5 + x3y5 + x4y5 + x5y5 + x6y5 + x7y5 + "│")
+    print("        │" + x1y4 + x2y4 + x3y4 + x4y4 + x5y4 + x6y4 + x7y4 + "│")
+    print("        " + w_exit + x1y3 + x2y3 + x3y3 + x4y3 + x5y3 + x6y3 + x7y3 + e_exit)
+    print("        │" + x1y2 + x2y2 + x3y2 + x4y2 + x5y2 + x6y2 + x7y2 + "│")
+    print("        │" + x1y1 + x2y1 + x3y1 + x4y1 + x5y1 + x6y1 + x7y1 + "│")
+    print("        └───" + s_exit + "───┘")
+    print()
   
 # creature no.1 movement
 
@@ -1688,6 +1693,7 @@ def treasure():
     global treasure_location
     global player_location
     global player_points
+    global high_score
 
 
     global x1y5
@@ -1737,6 +1743,9 @@ def treasure():
         choices = ["x1y1", "x2y1", "x3y1", "x4y1", "x5y1", "x6y1", "x7y1", "x1y2", "x2y2", "x3y2", "x4y2", "x5y2", "x6y2", "x7y2", "x1y3", "x2y3", "x3y3", "x4y3", "x5y3", "x6y3", "x7y3", "x1y4", "x2y4", "x3y4", "x4y4", "x5y4", "x6y4", "x7y4", "x1y5", "x2y5", "x3y5", "x4y5", "x5y5", "x6y5", "x7y5"]
         treasure_location = random.choice(choices)
 
+    if player_points > high_score:
+        high_score = player_points
+      
     if treasure_location == "x1y1":
         x1y1 = "♦"
     if treasure_location == "x2y1":
@@ -2455,7 +2464,7 @@ def room_x6y2():
     global player_loc_y
     global x6y2
     global player_location
-    player_location = "x5y1"
+    player_location = "x6y2"
     player_loc_x = 6
     player_loc_y = 2
     x6y2 = "☻"
@@ -2619,7 +2628,7 @@ def room_x6y1():
     global player_loc_y
     global x6y1
     global player_location
-    player_location = "x5y1"
+    player_location = "x6y1"
     player_loc_x = 6
     player_loc_y = 1
     x6y1 = "☻"
