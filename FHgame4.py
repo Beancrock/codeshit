@@ -1,11 +1,10 @@
 '''potential additions:
 Shotgun: starts with limited (3?) shells. only works one 'space' away. Player chooses direction to fire (n,s,e,w).
 Doesn't kill or damage enemy, but makes them retreat for X amount of turns. Can't shoot in direction where
-movement would be restricted (i.e can't hit enemy through walls).
+movement would be restricted (i.e. can't hit enemy through walls).
 Flare: 'stuns' enemy at spot where dropped for x amount of turns, maybe?
-Enemy spawn randomized, likely to share spots with 'valves'.
 'Vent crawling' for enemy under certain conditions (enemy moves without direction restrictions)
-May add random start/exit positions for replayability's sake.'''
+'''
 
 
 # imported shit
@@ -22,15 +21,15 @@ dungeon_map_01 = [
         [" ", " ", " ", " ", " ", " ", " ", " ", "║", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " ", " ", "╔", "═", "╩", "═", "╗", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " ", "╔", "╩", "═", "╦", "═", "╩", "╗", " ", " ", " ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", "║", " ", " ", "║", " ", " ", "║", " ", " ", " ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", "╔", "═", "╬", "═", "╦", "╩", "╦", "═", "╬", "═", "╗", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", "║", " ", "╔", "╩", "╗", " ", "║", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", "╔", "═", "╬", "═", "╣", " ", "╠", "═", "╬", "═", "╗", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", "╔", "╣", " ", "║", "╔", "╩", "╦", "╩", "╗", "║", " ", "╠", "╗", " ", " ", " ", " ", " ", " "],
-        [" ", " ", "║", "║", " ", "╠", "╣", " ", "║", " ", "╠", "╣", " ", "║", "║", " ", " ", " ", " ", " ", " "],
-        ["╞", "═", "╣", "╠", "═", "╣", "╠", "═", "⌂", "═", "╣", "╠", "═", "╣", "╠", "═", "╡", " ", " ", " ", " "],
-        [" ", " ", "║", "║", " ", "╠", "╣", " ", "║", " ", "╠", "╣", " ", "║", "║", " ", " ", " ", " ", " ", " "],
+        [" ", " ", "║", "║", "╔", "╩", "╣", " ", "║", " ", "╠", "╩", "╗", "║", "║", " ", " ", " ", " ", " ", " "],
+        ["╞", "═", "╣", "╠", "╣", " ", "╠", "═", "⌂", "═", "╣", " ", "╠", "╣", "╠", "═", "╡", " ", " ", " ", " "],
+        [" ", " ", "║", "║", "╚", "╦", "╣", " ", "║", " ", "╠", "╦", "╝", "║", "║", " ", " ", " ", " ", " ", " "],
         [" ", " ", "╚", "╣", " ", "║", "╚", "╦", "╩", "╦", "╝", "║", " ", "╠", "╝", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", "╚", "═", "╬", "═", "╩", "╦", "╩", "═", "╬", "═", "╝", " ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", "║", " ", " ", "║", " ", " ", "║", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", "╚", "═", "╬", "═", "╣", " ", "╠", "═", "╬", "═", "╝", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", "║", " ", "╚", "╦", "╝", " ", "║", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " ", "╚", "╦", "═", "╩", "═", "╦", "╝", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " ", " ", "╚", "═", "╦", "═", "╝", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " ", " ", " ", " ", "║", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
@@ -95,6 +94,7 @@ valve_1 = True
 valve_2 = True
 valve_3 = True
 valve_4 = True
+spawn = 0
 
 def intro():
     print()
@@ -145,6 +145,28 @@ def intro():
     input("Press enter.")
     print()
 
+# randomized start position for enemy
+
+def enemy_spawn():
+    global spawn
+    global zx
+    global zy
+
+    spawn = random.randint(1, 4)
+    if spawn == 1:
+        zy = 8
+        zx = 3
+    elif spawn == 2:
+        zy = 16
+        zx = 11
+    elif spawn == 3:
+        zy = 8
+        zx = 19
+    elif spawn == 4:
+        zy = 0
+        zx = 11
+                        
+
 # game loop
 
 def gameloop():
@@ -168,7 +190,7 @@ def map_display():
     global zy
 
 # map diplay
-
+        
     print("¦" + dungeon_map_01[y-2][x-2] + "¦" + dungeon_map_01[y-2][x-1] + "¦" + dungeon_map_01[y-2][x] + "¦" + dungeon_map_01[y-2][x+1] + "¦" + dungeon_map_01[y-2][x+2] + "¦")
     print("¦" + dungeon_map_01[y-1][x-2] + "¦" + dungeon_map_01[y-1][x-1] + "¦" + dungeon_map_01[y-1][x] + "¦" + dungeon_map_01[y-1][x+1] + "¦" +  dungeon_map_01[y-1][x+2] + "¦")
     print("¦" + dungeon_map_01[y][x-2] + "¦" + dungeon_map_01[y][x-1] + "¦☻¦" + dungeon_map_01[y][x+1] + "¦" + dungeon_map_01[y][x+2] + "¦")
@@ -180,11 +202,11 @@ def map_display():
 
     if x >= zx:
         p_e_x_distance = x - zx
-    elif x < zx:
+    if x < zx:
         p_e_x_distance = zx - x
-    elif y < zy:
+    if y < zy:
         p_e_y_distance = zy - y
-    elif y >= zy:
+    if y >= zy:
         p_e_y_distance = y - zy 
   
     p_e_t_distance = p_e_y_distance + p_e_x_distance
@@ -441,6 +463,7 @@ def valve_check():
         input()
         exit()
 
+enemy_spawn()
 intro()
 gameloop()
 
